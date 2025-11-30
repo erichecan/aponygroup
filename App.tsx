@@ -16,12 +16,12 @@ export default function App() {
   // Simple page title update
   useEffect(() => {
     const t = STRINGS[language];
-    let title = "Apony Inc";
+    let title = "AponyGroup";
     switch(currentPage) {
-      case 'services': title = `${t.navServices} | Apony Inc`; break;
-      case 'about': title = `${t.navAbout} | Apony Inc`; break;
-      case 'contact': title = `${t.navContact} | Apony Inc`; break;
-      case 'tracking': title = `${t.navTracking} | Apony Inc`; break;
+      case 'services': title = `${t.navServices} | AponyGroup`; break;
+      case 'about': title = `${t.navAbout} | AponyGroup`; break;
+      case 'contact': title = `${t.navContact} | AponyGroup`; break;
+      case 'tracking': title = `${t.navTracking} | AponyGroup`; break;
       default: title = t.heroTitle;
     }
     document.title = title;

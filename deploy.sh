@@ -12,7 +12,7 @@ REGION="asia-east1"
 REPOSITORY="apony-website"
 IMAGE_NAME="asia-east1-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${SERVICE_NAME}"
 
-echo "🚀 开始部署 Apony Inc 网站到 GCP Cloud Run..."
+echo "🚀 开始部署 AponyGroup 网站到 GCP Cloud Run..."
 echo ""
 
 # 检查是否已登录
@@ -53,7 +53,7 @@ if ! gcloud artifacts repositories describe ${REPOSITORY} \
     gcloud artifacts repositories create ${REPOSITORY} \
         --repository-format=docker \
         --location=${REGION} \
-        --description="Apony website Docker images" \
+        --description="AponyGroup website Docker images" \
         --project=${PROJECT_ID}
 fi
 

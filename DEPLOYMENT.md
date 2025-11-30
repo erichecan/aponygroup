@@ -2,7 +2,7 @@
 
 ## 项目信息
 - **GCP 项目 ID**: 882380127696
-- **项目名称**: Apony Inc Global Logistics & Warehousing
+- **项目名称**: AponyGroup Global Logistics & Warehousing
 - **部署方式**: Cloud Run
 
 ---

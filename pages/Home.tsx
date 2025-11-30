@@ -13,21 +13,21 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <section className="relative pt-20 overflow-hidden bg-black">
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[128px]"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[128px] opacity-50"></div>
+      <section className="relative pt-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-orange-50">
+        <div className="absolute inset-0 opacity-30 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[128px] opacity-20"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[128px] opacity-10"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-32 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B35]/20 border border-[#FF6B35]/50 text-[#FF6B35] text-xs font-semibold uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-[#FF6B35] animate-pulse"></span>
-            Apony Inc Logistics
+            AponyGroup Logistics
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8 max-w-4xl leading-[1.1]">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight mb-8 max-w-4xl leading-[1.1]">
             {t.heroTitle}
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mb-10 leading-relaxed">
             {t.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -40,7 +40,7 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
             </button>
             <button 
               onClick={() => {setPage('tracking'); window.scrollTo(0,0)}}
-              className="px-8 py-4 bg-black hover:bg-[#1a1a1a] text-white border border-[#FF6B35]/30 rounded-xl font-semibold transition-all flex items-center justify-center gap-2"
+              className="px-8 py-4 bg-white hover:bg-slate-50 text-slate-900 border-2 border-slate-200 hover:border-[#FF6B35] rounded-xl font-semibold transition-all flex items-center justify-center gap-2 shadow-sm"
             >
               <PackageCheck size={18} className="text-[#FF6B35]" />
               {t.heroSecondaryCTA}
@@ -49,7 +49,7 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
         </div>
 
         {/* Stats Bar */}
-        <div className="relative border-t border-[#FF6B35]/20 bg-black/50 backdrop-blur-sm">
+        <div className="relative border-t border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { label: t.statWarehouses, value: "12+" },
@@ -57,9 +57,9 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
               { label: "SKUs Managed", value: "100K+" },
               { label: t.statDelivery, value: "99.9%" },
             ].map((stat, i) => (
-              <div key={i} className="text-center md:text-left md:pl-8 md:border-l border-slate-800 first:border-0">
-                <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-sm text-slate-400 uppercase tracking-wide font-medium">{stat.label}</div>
+              <div key={i} className="text-center md:text-left md:pl-8 md:border-l border-slate-200 first:border-0">
+                <div className="text-3xl font-bold text-[#FF6B35] mb-1">{stat.value}</div>
+                <div className="text-sm text-slate-600 uppercase tracking-wide font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -120,7 +120,7 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-[#FF6B35] text-xs font-bold uppercase tracking-wider mb-6">
-                Apony Inc Advantage
+                AponyGroup Advantage
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
                 {t.whyChooseUs}

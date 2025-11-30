@@ -118,7 +118,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navTracking: "Track Order",
 
     heroTitle: "Global Logistics & Overseas Warehousing Solutions",
-    heroSubtitle: "Apony Inc provides efficient, secure, and digitized supply chain services. From warehousing to last-mile delivery, we empower your global commerce.",
+    heroSubtitle: "AponyGroup provides efficient, secure, and digitized supply chain services. From warehousing to last-mile delivery, we empower your global commerce.",
     heroCTA: "View Services",
     heroSecondaryCTA: "Track Shipment",
 
@@ -128,7 +128,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
 
     servicesTitle: "Our Core Services",
     servicesSubtitle: "Comprehensive solutions tailored for cross-border e-commerce",
-    whyChooseUs: "Why Choose Apony?",
+    whyChooseUs: "Why Choose AponyGroup?",
     
     // Services Page
     servicesPageTitle: "Comprehensive Logistics Solutions",
@@ -171,14 +171,14 @@ export const STRINGS: Record<Language, TranslationResource> = {
     ],
 
     // About Page
-    aboutTitle: "About Apony Inc",
+    aboutTitle: "About AponyGroup",
     aboutSubtitle: "Bridging the gap between global manufacturing and local delivery since 2019.",
     missionTitle: "Our Mission",
     missionDesc: "To simplify global trade by providing reliable, technology-driven logistics infrastructure that empowers businesses to scale without borders.",
     visionTitle: "Our Vision",
     visionDesc: "To be the world's most trusted partner in cross-border e-commerce logistics, setting the standard for speed, transparency, and service.",
     historyTitle: "Our Story",
-    historyDesc: "Founded with a single warehouse in California, Apony Inc has grown into a global logistics network. We recognized early on that software and service must go hand-in-hand. Today, we serve over 500+ clients ranging from emerging DTC brands to Fortune 500 manufacturers.",
+    historyDesc: "Founded with a single warehouse in California, AponyGroup has grown into a global logistics network. We recognized early on that software and service must go hand-in-hand. Today, we serve over 500+ clients ranging from emerging DTC brands to Fortune 500 manufacturers.",
 
     // Contact Page
     contactTitle: "Get in Touch",
@@ -199,17 +199,17 @@ export const STRINGS: Record<Language, TranslationResource> = {
     trackingButton: "Track",
     trackingResultMock: "Status: In Transit - Arrived at Distribution Center (Los Angeles, CA)",
 
-    footerAbout: "Apony Inc is a leading logistics provider specializing in overseas warehousing and global distribution services.",
-    rights: "© 2024 Apony Inc. All rights reserved.",
+    footerAbout: "AponyGroup is a leading logistics provider specializing in overseas warehousing and global distribution services.",
+    rights: "© 2024 AponyGroup. All rights reserved.",
 
-    chatTitle: "Apony Support",
+    chatTitle: "AponyGroup Support",
     chatSubtitle: "AI Assistant",
     placeholder: "Ask about rates, tracking...",
     send: "Send",
     clear: "Clear Chat",
     loading: "Thinking...",
     welcomeTitle: "How can we help?",
-    welcomeText: "I am Apony's AI assistant. Ask me about our warehouse locations, shipping rates, or services.",
+    welcomeText: "I am AponyGroup's AI assistant. Ask me about our warehouse locations, shipping rates, or services.",
     errorGeneric: "Connection error. Please try again."
   },
   [Language.ZH]: {
@@ -221,7 +221,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navTracking: "运单追踪",
 
     heroTitle: "全球物流与海外仓一站式解决方案",
-    heroSubtitle: "Apony Inc 提供高效、安全、数字化的供应链服务。从海外仓储到末端派送，我们为您的跨境贸易赋能。",
+    heroSubtitle: "AponyGroup 提供高效、安全、数字化的供应链服务。从海外仓储到末端派送，我们为您的跨境贸易赋能。",
     heroCTA: "查看服务",
     heroSecondaryCTA: "运单追踪",
 
@@ -231,7 +231,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
 
     servicesTitle: "核心业务",
     servicesSubtitle: "专为跨境电商量身定制的综合解决方案",
-    whyChooseUs: "为什么选择 Apony？",
+    whyChooseUs: "为什么选择 AponyGroup？",
 
     // Services Page
     servicesPageTitle: "全方位物流解决方案",
@@ -274,14 +274,14 @@ export const STRINGS: Record<Language, TranslationResource> = {
     ],
 
     // About Page
-    aboutTitle: "关于 Apony Inc",
+    aboutTitle: "关于 AponyGroup",
     aboutSubtitle: "自2019年起，致力于连接全球制造与本地交付。",
     missionTitle: "我们的使命",
     missionDesc: "通过提供可靠、技术驱动的物流基础设施，简化全球贸易，赋能企业实现无国界扩展。",
     visionTitle: "我们的愿景",
     visionDesc: "成为全球最值得信赖的跨境电商物流合作伙伴，树立速度、透明度和服务的新标准。",
     historyTitle: "发展历程",
-    historyDesc: "Apony Inc 成立于加利福尼亚州，最初只有一个仓库，现已发展成为全球物流网络。我们很早就认识到软件与服务必须相辅相成。如今，我们服务于 500 多家客户，涵盖新兴 DTC 品牌到世界 500 强制造商。",
+    historyDesc: "AponyGroup 成立于加利福尼亚州，最初只有一个仓库，现已发展成为全球物流网络。我们很早就认识到软件与服务必须相辅相成。如今，我们服务于 500 多家客户，涵盖新兴 DTC 品牌到世界 500 强制造商。",
 
     // Contact Page
     contactTitle: "联系我们",
@@ -302,17 +302,17 @@ export const STRINGS: Record<Language, TranslationResource> = {
     trackingButton: "查询",
     trackingResultMock: "状态：运输中 - 已到达分拨中心 (Los Angeles, CA)",
 
-    footerAbout: "Apony Inc 是一家领先的物流服务商，专注于海外仓储和全球分销服务。",
-    rights: "© 2024 Apony Inc. 保留所有权利。",
+    footerAbout: "AponyGroup 是一家领先的物流服务商，专注于海外仓储和全球分销服务。",
+    rights: "© 2024 AponyGroup. 保留所有权利。",
 
-    chatTitle: "Apony 客服",
+    chatTitle: "AponyGroup 客服",
     chatSubtitle: "AI 智能助手",
     placeholder: "咨询运费、查询单号...",
     send: "发送",
     clear: "清空",
     loading: "思考中...",
     welcomeTitle: "有什么可以帮您？",
-    welcomeText: "我是 Apony 的 AI 助手。您可以咨询关于仓库位置、物流时效或业务合作的问题。",
+    welcomeText: "我是 AponyGroup 的 AI 助手。您可以咨询关于仓库位置、物流时效或业务合作的问题。",
     errorGeneric: "连接错误，请重试。"
   }
 };

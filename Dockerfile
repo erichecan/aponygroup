@@ -1,4 +1,4 @@
-# Dockerfile for Apony Inc Website
+# Dockerfile for AponyGroup Website
 # Created: 2025-01-27
 
 # 使用 Node.js 官方镜像作为构建环境

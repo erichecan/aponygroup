@@ -99,7 +99,7 @@ gcloud services enable \
 gcloud artifacts repositories create apony-website \
   --repository-format=docker \
   --location=asia-east1 \
-  --description="Apony website Docker images" \
+  --description="AponyGroup website Docker images" \
   --project=882380127696
 ```
 
