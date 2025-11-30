@@ -13,15 +13,15 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <section className="relative pt-20 overflow-hidden bg-slate-900">
+      <section className="relative pt-20 overflow-hidden bg-black">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[128px]"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-[128px]"></div>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[128px]"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[128px] opacity-50"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-32 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/50 border border-blue-700/50 text-blue-200 text-xs font-semibold uppercase tracking-wider mb-6">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B35]/20 border border-[#FF6B35]/50 text-[#FF6B35] text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#FF6B35] animate-pulse"></span>
             Apony Inc Logistics
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8 max-w-4xl leading-[1.1]">
@@ -33,23 +33,23 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <button 
               onClick={() => {setPage('services'); window.scrollTo(0,0)}}
-              className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2"
+              className="px-8 py-4 bg-[#FF6B35] hover:bg-[#E55A2B] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#FF6B35]/25 flex items-center justify-center gap-2"
             >
               {t.heroCTA}
               <ArrowRight size={18} />
             </button>
             <button 
               onClick={() => {setPage('tracking'); window.scrollTo(0,0)}}
-              className="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl font-semibold transition-all flex items-center justify-center gap-2"
+              className="px-8 py-4 bg-black hover:bg-[#1a1a1a] text-white border border-[#FF6B35]/30 rounded-xl font-semibold transition-all flex items-center justify-center gap-2"
             >
-              <PackageCheck size={18} className="text-blue-400" />
+              <PackageCheck size={18} className="text-[#FF6B35]" />
               {t.heroSecondaryCTA}
             </button>
           </div>
         </div>
 
         {/* Stats Bar */}
-        <div className="relative border-t border-slate-800/50 bg-slate-900/50 backdrop-blur-sm">
+        <div className="relative border-t border-[#FF6B35]/20 bg-black/50 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { label: t.statWarehouses, value: "12+" },
@@ -76,18 +76,18 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
-              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+              <div className="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-[#FF6B35] mb-6 group-hover:bg-[#FF6B35] group-hover:text-white transition-colors">
                 <Warehouse size={32} />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">{t.serviceWarehousingTitle}</h3>
               <p className="text-slate-600 leading-relaxed mb-6 line-clamp-3">{t.serviceWarehousingDesc}</p>
-              <button onClick={() => {setPage('services'); window.scrollTo(0,0)}} className="inline-flex items-center text-blue-600 font-semibold hover:gap-2 transition-all">
+              <button onClick={() => {setPage('services'); window.scrollTo(0,0)}} className="inline-flex items-center text-[#FF6B35] font-semibold hover:gap-2 transition-all">
                 Learn more <ArrowRight size={16} className="ml-1" />
               </button>
             </div>
 
             <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
-              <div className="w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+              <div className="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-[#FF6B35] mb-6 group-hover:bg-[#FF6B35] group-hover:text-white transition-colors">
                 <div className="flex">
                   <Plane size={24} className="-mr-1" />
                   <Ship size={24} className="-ml-1 translate-y-2" />
@@ -95,18 +95,18 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">{t.serviceLogisticsTitle}</h3>
               <p className="text-slate-600 leading-relaxed mb-6 line-clamp-3">{t.serviceLogisticsDesc}</p>
-              <button onClick={() => {setPage('services'); window.scrollTo(0,0)}} className="inline-flex items-center text-indigo-600 font-semibold hover:gap-2 transition-all">
+              <button onClick={() => {setPage('services'); window.scrollTo(0,0)}} className="inline-flex items-center text-[#FF6B35] font-semibold hover:gap-2 transition-all">
                 Learn more <ArrowRight size={16} className="ml-1" />
               </button>
             </div>
 
              <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
-              <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+              <div className="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-[#FF6B35] mb-6 group-hover:bg-[#FF6B35] group-hover:text-white transition-colors">
                 <BarChart3 size={32} />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">{t.serviceWMSTitle}</h3>
               <p className="text-slate-600 leading-relaxed mb-6 line-clamp-3">{t.serviceWMSDesc}</p>
-              <button onClick={() => {setPage('services'); window.scrollTo(0,0)}} className="inline-flex items-center text-emerald-600 font-semibold hover:gap-2 transition-all">
+              <button onClick={() => {setPage('services'); window.scrollTo(0,0)}} className="inline-flex items-center text-[#FF6B35] font-semibold hover:gap-2 transition-all">
                 Learn more <ArrowRight size={16} className="ml-1" />
               </button>
             </div>
@@ -119,7 +119,7 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-[#FF6B35] text-xs font-bold uppercase tracking-wider mb-6">
                 Apony Inc Advantage
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
@@ -134,7 +134,7 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
                 ].map((feature, i) => (
                   <div key={i} className="flex gap-4">
                     <div className="flex-shrink-0 mt-1">
-                      <CheckCircle2 className="w-6 h-6 text-blue-600" />
+                      <CheckCircle2 className="w-6 h-6 text-[#FF6B35]" />
                     </div>
                     <div>
                       <h4 className="text-lg font-bold text-slate-900 mb-1">{feature.title}</h4>
@@ -155,7 +155,7 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
                           <div className="w-32 h-4 bg-slate-400/50 rounded-full"></div>
                           <div className="w-24 h-4 bg-slate-400/30 rounded-full"></div>
                        </div>
-                       <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                       <div className="w-16 h-16 bg-[#FF6B35] rounded-2xl flex items-center justify-center text-white shadow-lg">
                           <Warehouse size={32} />
                        </div>
                     </div>

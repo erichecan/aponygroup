@@ -1,0 +1,60 @@
+# Cloud Build configuration for GCP deployment (Free Tier Optimized)
+# Created: 2025-01-27
+# Project ID: 882380127696
+# 优化为免费层配置：最小资源使用，使用 Artifact Registry
+
+steps:
+  # 构建 Docker 镜像
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$SHORT_SHA', '-t', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:latest', '.']
+
+  # 推送镜像到 Artifact Registry (免费层：0.5GB 存储免费)
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$SHORT_SHA']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:latest']
+
+  # 部署到 Cloud Run (免费层配置：256Mi 内存，0.5 CPU)
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'apony-website'
+      - '--image'
+      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$SHORT_SHA'
+      - '--region'
+      - 'asia-east1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '80'
+      - '--memory'
+      - '256Mi'
+      - '--cpu'
+      - '0.5'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '5'
+      - '--timeout'
+      - '300'
+      - '--concurrency'
+      - '80'
+      - '--set-env-vars'
+      - 'GEMINI_API_KEY=${_GEMINI_API_KEY}'
+
+# 替换变量
+substitutions:
+  _GEMINI_API_KEY: ''  # 需要在 Cloud Build 中设置
+
+# 镜像选项（使用标准机器类型以节省构建时间）
+options:
+  machineType: 'E2_STANDARD_2'
+  logging: CLOUD_LOGGING_ONLY
+
+# 超时设置（减少到 10 分钟）
+timeout: '600s'
+

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { Language, STRINGS, Page } from '../types';
+import { Logo } from './Logo';
 
 interface NavbarProps {
   language: Language;
@@ -36,15 +37,10 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
           <div 
-            className="flex items-center gap-2 cursor-pointer" 
+            className="cursor-pointer" 
             onClick={() => handleNavClick('home')}
           >
-            <div className="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-900/20">
-              A
-            </div>
-            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">
-              Apony Inc
-            </span>
+            <Logo size="md" showText={true} />
           </div>
 
           {/* Desktop Menu */}
@@ -55,8 +51,8 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
                 onClick={() => handleNavClick(link.id)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   currentPage === link.id 
-                    ? 'text-blue-700 bg-blue-50' 
-                    : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'
+                    ? 'text-[#FF6B35] bg-orange-50' 
+                    : 'text-slate-600 hover:text-[#FF6B35] hover:bg-orange-50'
                 }`}
               >
                 {link.label}
@@ -75,8 +71,8 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
                 onClick={() => handleNavClick('contact')}
                 className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-colors ${
                     currentPage === 'contact' 
-                    ? 'bg-blue-700 text-white' 
-                    : 'bg-slate-900 text-white hover:bg-slate-800'
+                    ? 'bg-[#FF6B35] text-white' 
+                    : 'bg-black text-white hover:bg-[#1a1a1a]'
                 }`}
               >
                 {t.navContact}
@@ -109,8 +105,8 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
                 onClick={() => handleNavClick(link.id)}
                 className={`block w-full text-left px-3 py-3 text-base font-medium rounded-md ${
                     currentPage === link.id 
-                    ? 'text-blue-700 bg-blue-50' 
-                    : 'text-slate-600 hover:bg-slate-50'
+                    ? 'text-[#FF6B35] bg-orange-50' 
+                    : 'text-slate-600 hover:bg-orange-50'
                 }`}
               >
                 {link.label}
@@ -118,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
             ))}
             <button
                onClick={() => handleNavClick('contact')}
-               className="block w-full text-left px-3 py-3 text-base font-medium text-blue-600 hover:bg-blue-50 rounded-md"
+               className="block w-full text-left px-3 py-3 text-base font-medium text-[#FF6B35] hover:bg-orange-50 rounded-md"
             >
               {t.navContact}
             </button>

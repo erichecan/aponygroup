@@ -10,12 +10,26 @@
         theme: {
           extend: {
             colors: {
+              // 公司品牌色：橙色和黑色
+              brand: {
+                orange: '#FF6B35',      // 主橙色（Logo 颜色）
+                'orange-dark': '#E55A2B', // 深橙色（hover 状态）
+                'orange-light': '#FF8C5A', // 浅橙色
+                black: '#000000',        // 纯黑色
+                'black-light': '#1a1a1a',  // 浅黑色
+              },
+              // 保留 primary 作为橙色别名，方便替换
               primary: {
-                50: '#f0f9ff',
-                100: '#e0f2fe',
-                500: '#0ea5e9',
-                600: '#0284c7',
-                700: '#0369a1',
+                50: '#fff5f2',
+                100: '#ffe8e0',
+                200: '#ffd5c7',
+                300: '#ffb8a3',
+                400: '#ff906f',
+                500: '#FF6B35',  // 主橙色
+                600: '#E55A2B',  // 深橙色
+                700: '#CC4A21',
+                800: '#B33A17',
+                900: '#9A2A0D',
               }
             },
             animation: {
@@ -35,11 +49,11 @@
         background: transparent; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #cbd5e1; 
+        background: #FF6B35; 
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8; 
+        background: #E55A2B; 
       }
     </style>
   <script type="importmap">
@@ -56,7 +70,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-primary-100 selection:text-primary-700">
+  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-orange-100 selection:text-[#FF6B35]">
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

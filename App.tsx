@@ -28,7 +28,7 @@ export default function App() {
   }, [currentPage, language]);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900 flex flex-col">
+    <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-[#FF6B35] flex flex-col">
       
       <Navbar 
         language={language} 

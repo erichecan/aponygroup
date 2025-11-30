@@ -14,7 +14,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`grid md:grid-cols-2 gap-12 items-center ${align === 'right' ? 'md:grid-flow-dense' : ''}`}>
           <div className={align === 'right' ? 'md:col-start-2' : ''}>
-            <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
+            <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-[#FF6B35] mb-6">
               <Icon size={32} />
             </div>
             <h2 className="text-3xl font-bold text-slate-900 mb-4">{title}</h2>
@@ -22,7 +22,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             <ul className="space-y-4">
               {points.map((point: string, i: number) => (
                 <li key={i} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                  <Check className="w-5 h-5 text-[#FF6B35] shrink-0 mt-0.5" />
                   <span className="text-slate-700 font-medium">{point}</span>
                 </li>
               ))}
@@ -41,7 +41,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
 
   return (
     <div className="pt-20 animate-fade-in">
-      <div className="bg-slate-900 py-20 text-center text-white">
+      <div className="bg-black py-20 text-center text-white">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.servicesPageTitle}</h1>
         <p className="text-xl text-slate-300 max-w-2xl mx-auto px-4">{t.servicesPageSubtitle}</p>
       </div>

@@ -27,7 +27,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
 
   return (
     <div className="pt-20 animate-fade-in min-h-screen bg-slate-50">
-      <div className="bg-slate-900 py-20 text-center text-white relative overflow-hidden">
+      <div className="bg-black py-20 text-center text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none">
              <PackageSearch size={400} />
         </div>
@@ -46,7 +46,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
             <button 
               type="submit"
               disabled={loading}
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-colors disabled:opacity-70 flex items-center gap-2"
+              className="px-8 py-3 bg-[#FF6B35] hover:bg-[#E55A2B] text-white font-bold rounded-lg transition-colors disabled:opacity-70 flex items-center gap-2"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

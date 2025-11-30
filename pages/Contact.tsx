@@ -18,7 +18,7 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
 
   return (
     <div className="pt-20 animate-fade-in bg-slate-50 min-h-screen">
-      <div className="bg-slate-900 py-16 text-center text-white">
+      <div className="bg-black py-16 text-center text-white">
         <h1 className="text-4xl font-bold mb-4">{t.contactTitle}</h1>
         <p className="text-slate-300">{t.contactSubtitle}</p>
       </div>
@@ -32,14 +32,14 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
               <div className="space-y-6">
                 <div>
                    <div className="flex items-start gap-3 mb-2">
-                     <MapPin className="w-5 h-5 text-blue-600 mt-1" />
+                     <MapPin className="w-5 h-5 text-[#FF6B35] mt-1" />
                      <span className="font-semibold text-slate-800">{t.locationUS}</span>
                    </div>
                    <p className="pl-8 text-sm text-slate-500">123 Logistics Way, Commerce City, CA 90040</p>
                 </div>
                 <div>
                    <div className="flex items-start gap-3 mb-2">
-                     <MapPin className="w-5 h-5 text-blue-600 mt-1" />
+                     <MapPin className="w-5 h-5 text-[#FF6B35] mt-1" />
                      <span className="font-semibold text-slate-800">{t.locationCN}</span>
                    </div>
                    <p className="pl-8 text-sm text-slate-500">Longhua District, Shenzhen, China</p>
@@ -47,7 +47,7 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
               </div>
             </div>
 
-            <div className="bg-blue-600 p-8 rounded-2xl shadow-lg text-white">
+            <div className="bg-[#FF6B35] p-8 rounded-2xl shadow-lg text-white">
               <h3 className="text-xl font-bold mb-6">Direct Contact</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -84,7 +84,7 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">{t.formName}</label>
-                      <input required type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all" />
+                      <input required type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-[#FF6B35] focus:ring-1 focus:ring-[#FF6B35] outline-none transition-all" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">{t.formEmail}</label>
@@ -97,9 +97,9 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">{t.formMessage}</label>
-                    <textarea required rows={5} className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"></textarea>
+                    <textarea required rows={5} className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-[#FF6B35] focus:ring-1 focus:ring-[#FF6B35] outline-none transition-all resize-none"></textarea>
                   </div>
-                  <button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2">
+                  <button type="submit" className="w-full bg-black hover:bg-[#1a1a1a] text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2">
                     {t.formSubmit}
                     <Send size={18} />
                   </button>
