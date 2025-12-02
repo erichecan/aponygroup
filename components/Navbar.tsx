@@ -23,6 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
     { id: 'services', label: t.navServices },
     { id: 'about', label: t.navAbout },
     { id: 'tracking', label: t.navTracking },
+    { id: 'login', label: t.navLogin },
   ];
 
   const handleNavClick = (page: Page) => {
@@ -40,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
             className="cursor-pointer" 
             onClick={() => handleNavClick('home')}
           >
-            <Logo size="md" showText={false} />
+            <Logo size="full" showText={false} />
           </div>
 
           {/* Desktop Menu */}

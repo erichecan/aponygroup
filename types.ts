@@ -16,7 +16,7 @@ export interface Message {
   isError?: boolean;
 }
 
-export type Page = 'home' | 'services' | 'about' | 'contact' | 'tracking';
+export type Page = 'home' | 'services' | 'about' | 'contact' | 'tracking' | 'login';
 
 export interface TranslationResource {
   // Navigation
@@ -26,6 +26,7 @@ export interface TranslationResource {
   navAbout: string;
   navContact: string;
   navTracking: string;
+  navLogin: string;
 
   // Hero (Home)
   heroTitle: string;
@@ -116,6 +117,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navAbout: "About Us",
     navContact: "Contact",
     navTracking: "Track Order",
+    navLogin: "System Login",
 
     heroTitle: "Global Logistics & Overseas Warehousing Solutions",
     heroSubtitle: "AponyGroup provides efficient, secure, and digitized supply chain services. From warehousing to last-mile delivery, we empower your global commerce.",
@@ -219,6 +221,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navAbout: "关于我们",
     navContact: "联系我们",
     navTracking: "运单追踪",
+    navLogin: "系统登录",
 
     heroTitle: "全球物流与海外仓一站式解决方案",
     heroSubtitle: "AponyGroup 提供高效、安全、数字化的供应链服务。从海外仓储到末端派送，我们为您的跨境贸易赋能。",

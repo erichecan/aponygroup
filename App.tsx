@@ -8,6 +8,7 @@ import { Services } from './pages/Services';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Tracking } from './pages/Tracking';
+import { Login } from './pages/Login';
 
 export default function App() {
   const [language, setLanguage] = useState<Language>(Language.ZH);
@@ -22,6 +23,7 @@ export default function App() {
       case 'about': title = `${t.navAbout} | AponyGroup`; break;
       case 'contact': title = `${t.navContact} | AponyGroup`; break;
       case 'tracking': title = `${t.navTracking} | AponyGroup`; break;
+      case 'login': title = `${t.navLogin} | AponyGroup`; break;
       default: title = t.heroTitle;
     }
     document.title = title;
@@ -44,6 +46,7 @@ export default function App() {
         {currentPage === 'about' && <About language={language} />}
         {currentPage === 'contact' && <Contact language={language} />}
         {currentPage === 'tracking' && <Tracking language={language} />}
+        {currentPage === 'login' && <Login language={language} />}
       </main>
 
       <Footer language={language} setPage={setCurrentPage} />
