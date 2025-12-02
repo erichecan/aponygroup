@@ -18,7 +18,22 @@ export const About: React.FC<AboutProps> = ({ language }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      {/* Service Coverage Notice - 2024-12-19 14:55:00 */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="bg-[#FF6B35]/10 border border-[#FF6B35]/20 rounded-2xl p-6 text-center">
+          <p className="text-slate-700 font-semibold text-lg mb-2">
+            {language === 'en' ? 'Service Coverage' : '服务范围'}
+          </p>
+          <p className="text-slate-600">
+            {language === 'en' 
+              ? 'We specialize exclusively in US and Canada markets. Our services include customs clearance, landing services, warehousing, and transportation within North America.'
+              : '我们专注美加市场，提供清关、落地服务、仓储和运输等全方位物流服务。'
+            }
+          </p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
             <Target className="w-10 h-10 text-[#FF6B35] mb-4" />

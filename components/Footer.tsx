@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ language, setPage }) => {
   return (
     <footer className="bg-black text-slate-300 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-5 gap-12 mb-12">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="mb-6">
@@ -33,6 +33,16 @@ export const Footer: React.FC<FooterProps> = ({ language, setPage }) => {
               <li><button onClick={() => {setPage('services'); window.scrollTo(0,0)}} className="hover:text-[#FF6B35] transition-colors text-left">{t.serviceLogisticsTitle}</button></li>
               <li><button onClick={() => {setPage('services'); window.scrollTo(0,0)}} className="hover:text-[#FF6B35] transition-colors text-left">{t.serviceFbaTitle}</button></li>
               <li><button onClick={() => {setPage('tracking'); window.scrollTo(0,0)}} className="hover:text-[#FF6B35] transition-colors text-left">{t.navTracking}</button></li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="text-white font-bold mb-6">Resources</h4>
+            <ul className="space-y-4 text-sm">
+              <li><button onClick={() => {setPage('cases'); window.scrollTo(0,0)}} className="hover:text-[#FF6B35] transition-colors text-left">{t.navCases}</button></li>
+              <li><button onClick={() => {setPage('news'); window.scrollTo(0,0)}} className="hover:text-[#FF6B35] transition-colors text-left">{t.navNews}</button></li>
+              <li><button onClick={() => {setPage('faq'); window.scrollTo(0,0)}} className="hover:text-[#FF6B35] transition-colors text-left">{t.navFAQ}</button></li>
             </ul>
           </div>
 

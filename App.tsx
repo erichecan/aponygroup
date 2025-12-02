@@ -8,12 +8,15 @@ import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Tracking } from './pages/Tracking';
 import { Login } from './pages/Login';
+import { FAQ } from './pages/FAQ';
+import { Cases } from './pages/Cases';
+import { News } from './pages/News';
 
 export default function App() {
   const [language, setLanguage] = useState<Language>(Language.ZH);
   const [currentPage, setCurrentPage] = useState<Page>('home');
 
-  // Simple page title update
+  // Simple page title update - 2024-12-19 14:45:00
   useEffect(() => {
     const t = STRINGS[language];
     let title = "AponyGroup";
@@ -23,6 +26,10 @@ export default function App() {
       case 'contact': title = `${t.navContact} | AponyGroup`; break;
       case 'tracking': title = `${t.navTracking} | AponyGroup`; break;
       case 'login': title = `${t.navLogin} | AponyGroup`; break;
+      case 'faq': title = `${t.navFAQ} | AponyGroup`; break;
+      case 'cases': title = `${t.navCases} | AponyGroup`; break;
+      case 'news': title = `${t.navNews} | AponyGroup`; break;
+      case 'newsDetail': title = `${t.navNews} | AponyGroup`; break;
       default: title = t.heroTitle;
     }
     document.title = title;
@@ -46,6 +53,9 @@ export default function App() {
         {currentPage === 'contact' && <Contact language={language} />}
         {currentPage === 'tracking' && <Tracking language={language} />}
         {currentPage === 'login' && <Login language={language} />}
+        {currentPage === 'faq' && <FAQ language={language} />}
+        {currentPage === 'cases' && <Cases language={language} />}
+        {(currentPage === 'news' || currentPage === 'newsDetail') && <News language={language} setPage={setCurrentPage} />}
       </main>
 
       <Footer language={language} setPage={setCurrentPage} />

@@ -40,10 +40,19 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
                 <div>
                    <div className="flex items-start gap-3 mb-2">
                      <MapPin className="w-5 h-5 text-[#FF6B35] mt-1" />
-                     <span className="font-semibold text-slate-800">{t.locationCN}</span>
+                     <span className="font-semibold text-slate-800">{t.locationCA}</span>
                    </div>
-                   <p className="pl-8 text-sm text-slate-500">Longhua District, Shenzhen, China</p>
+                   <p className="pl-8 text-sm text-slate-500">456 Bay Street, Toronto, ON M5H 2Y4, Canada</p>
                 </div>
+              </div>
+              {/* Service Coverage Notice - 2024-12-19 15:00:00 */}
+              <div className="mt-6 pt-6 border-t border-slate-200">
+                <p className="text-xs text-slate-500 italic">
+                  {language === 'en' 
+                    ? 'We serve US and Canada markets exclusively.'
+                    : '我们仅服务美加市场。'
+                  }
+                </p>
               </div>
             </div>
 

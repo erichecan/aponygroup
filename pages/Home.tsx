@@ -22,7 +22,7 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-32 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B35]/20 border border-[#FF6B35]/50 text-[#FF6B35] text-xs font-semibold uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-[#FF6B35] animate-pulse"></span>
-            AponyGroup Logistics
+            {language === 'en' ? 'US & Canada Logistics Specialist' : '美加物流专家'}
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight mb-8 max-w-4xl leading-[1.1]">
             {t.heroTitle}

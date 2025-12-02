@@ -46,6 +46,18 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         <p className="text-xl text-slate-300 max-w-2xl mx-auto px-4">{t.servicesPageSubtitle}</p>
       </div>
 
+      {/* Service Coverage Notice - 2024-12-19 14:50:00 */}
+      <div className="bg-[#FF6B35]/10 border-y border-[#FF6B35]/20 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-slate-700 font-medium">
+            {language === 'en' 
+              ? '✓ Specialized in US & Canada markets only | Customs Clearance • Landing Services • Warehousing • Transportation'
+              : '✓ 专注美加市场 | 清关服务 • 落地服务 • 入仓服务 • 运输服务'
+            }
+          </p>
+        </div>
+      </div>
+
       <ServiceSection 
         title={t.serviceWarehousingTitle}
         desc={t.serviceWarehousingDesc}

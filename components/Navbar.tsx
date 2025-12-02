@@ -22,7 +22,10 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
     { id: 'home', label: t.navHome },
     { id: 'services', label: t.navServices },
     { id: 'about', label: t.navAbout },
+    { id: 'cases', label: t.navCases },
+    { id: 'news', label: t.navNews },
     { id: 'tracking', label: t.navTracking },
+    { id: 'faq', label: t.navFAQ },
     { id: 'login', label: t.navLogin },
   ];
 
