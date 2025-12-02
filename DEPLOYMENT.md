@@ -47,15 +47,7 @@ gcloud config set project 882380127696
 gcloud auth configure-docker
 ```
 
-### 步骤 3: 设置环境变量
-
-创建 `.env.production` 文件（不要提交到 Git）：
-
-```bash
-GEMINI_API_KEY=your_gemini_api_key_here
-```
-
-### 步骤 4: 构建并推送镜像
+### 步骤 3: 构建并推送镜像
 
 ```bash
 # 构建 Docker 镜像
@@ -77,8 +69,7 @@ gcloud run deploy apony-website \
   --memory 512Mi \
   --cpu 1 \
   --min-instances 0 \
-  --max-instances 10 \
-  --set-env-vars GEMINI_API_KEY=your_gemini_api_key_here
+  --max-instances 10
 ```
 
 ### 步骤 6: 获取服务 URL
@@ -92,56 +83,7 @@ https://apony-website-xxxxx-xx.a.run.app
 
 ## 三、使用 Cloud Build 自动部署（推荐）
 
-### 步骤 1: 在 Cloud Build 中设置 Secret
-
-由于 API key 是敏感信息，建议使用 Secret Manager：
-
-```bash
-# 创建 secret
-echo -n "your_gemini_api_key_here" | gcloud secrets create gemini-api-key \
-  --data-file=- \
-  --project=882380127696
-
-# 授予 Cloud Build 访问权限
-gcloud secrets add-iam-policy-binding gemini-api-key \
-  --member="serviceAccount:882380127696@cloudbuild.gserviceaccount.com" \
-  --role="roles/secretmanager.secretAccessor" \
-  --project=882380127696
-```
-
-### 步骤 2: 修改 cloudbuild.yaml
-
-更新 `cloudbuild.yaml` 以使用 Secret Manager：
-
-```yaml
-steps:
-  # ... 构建步骤 ...
-  
-  # 部署步骤
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: bash
-    args:
-      - '-c'
-      - |
-        export GEMINI_API_KEY=$$(gcloud secrets versions access latest --secret=gemini-api-key)
-        gcloud run deploy apony-website \
-          --image gcr.io/$PROJECT_ID/apony-website:$SHORT_SHA \
-          --region asia-east1 \
-          --platform managed \
-          --allow-unauthenticated \
-          --port 80 \
-          --memory 512Mi \
-          --cpu 1 \
-          --set-env-vars GEMINI_API_KEY=$$GEMINI_API_KEY
-    secretEnv: ['GEMINI_API_KEY']
-
-availableSecrets:
-  secretManager:
-    - versionName: projects/882380127696/secrets/gemini-api-key/versions/latest
-      env: 'GEMINI_API_KEY'
-```
-
-### 步骤 3: 连接 GitHub 仓库
+### 步骤 1: 连接 GitHub 仓库
 
 1. 访问 [Cloud Build 触发器](https://console.cloud.google.com/cloud-build/triggers?project=882380127696)
 2. 点击"创建触发器"

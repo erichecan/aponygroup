@@ -43,12 +43,6 @@ steps:
       - '300'
       - '--concurrency'
       - '80'
-      - '--set-env-vars'
-      - 'GEMINI_API_KEY=${_GEMINI_API_KEY}'
-
-# 替换变量
-substitutions:
-  _GEMINI_API_KEY: ''  # 需要在 Cloud Build 中设置
 
 # 镜像选项（使用标准机器类型以节省构建时间）
 options:

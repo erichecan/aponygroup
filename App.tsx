@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Language, Page, STRINGS } from './types';
-import { ChatWidget } from './components/ChatWidget';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
@@ -50,9 +49,6 @@ export default function App() {
       </main>
 
       <Footer language={language} setPage={setCurrentPage} />
-
-      {/* AI Chat Widget - Persists across pages */}
-      <ChatWidget language={language} />
     </div>
   );
 }

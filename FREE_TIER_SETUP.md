@@ -106,9 +106,6 @@ gcloud artifacts repositories create apony-website \
 ### 步骤 3: 部署（使用优化脚本）
 
 ```bash
-# 设置 API Key
-export GEMINI_API_KEY="your_gemini_api_key_here"
-
 # 运行部署脚本（已优化为免费层配置）
 ./deploy.sh
 ```

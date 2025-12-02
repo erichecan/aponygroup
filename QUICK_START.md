@@ -28,13 +28,10 @@
 ### 方法 1: 使用部署脚本（推荐）
 
 ```bash
-# 1. 设置 API Key（可选，也可稍后设置）
-export GEMINI_API_KEY="your_gemini_api_key_here"
-
-# 2. 运行部署脚本
+# 1. 运行部署脚本
 ./deploy.sh
 
-# 3. 完成！脚本会显示服务 URL
+# 2. 完成！脚本会显示服务 URL
 ```
 
 ### 方法 2: 手动部署（免费层配置）
@@ -64,8 +61,7 @@ gcloud run deploy apony-website \
   --memory 256Mi \
   --cpu 0.5 \
   --min-instances 0 \
-  --max-instances 5 \
-  --set-env-vars GEMINI_API_KEY=your_gemini_api_key_here
+  --max-instances 5
 
 # 5. 获取服务 URL
 gcloud run services describe apony-website \
@@ -111,7 +107,6 @@ TTL: 3600
 ```bash
 gcloud run services update apony-website \
   --region asia-east1 \
-  --update-env-vars GEMINI_API_KEY=your_api_key_here
 ```
 
 ---

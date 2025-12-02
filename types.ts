@@ -3,19 +3,6 @@ export enum Language {
   ZH = 'zh'
 }
 
-export enum Role {
-  USER = 'user',
-  MODEL = 'model'
-}
-
-export interface Message {
-  id: string;
-  role: Role;
-  content: string;
-  timestamp: number;
-  isError?: boolean;
-}
-
 export type Page = 'home' | 'services' | 'about' | 'contact' | 'tracking' | 'login';
 
 export interface TranslationResource {
@@ -96,17 +83,6 @@ export interface TranslationResource {
   // Footer
   footerAbout: string;
   rights: string;
-
-  // Chat Widget
-  chatTitle: string;
-  chatSubtitle: string;
-  placeholder: string;
-  send: string;
-  clear: string;
-  loading: string;
-  welcomeTitle: string;
-  welcomeText: string;
-  errorGeneric: string;
 }
 
 export const STRINGS: Record<Language, TranslationResource> = {
@@ -202,17 +178,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     trackingResultMock: "Status: In Transit - Arrived at Distribution Center (Los Angeles, CA)",
 
     footerAbout: "AponyGroup is a leading logistics provider specializing in overseas warehousing and global distribution services.",
-    rights: "© 2024 AponyGroup. All rights reserved.",
-
-    chatTitle: "AponyGroup Support",
-    chatSubtitle: "AI Assistant",
-    placeholder: "Ask about rates, tracking...",
-    send: "Send",
-    clear: "Clear Chat",
-    loading: "Thinking...",
-    welcomeTitle: "How can we help?",
-    welcomeText: "I am AponyGroup's AI assistant. Ask me about our warehouse locations, shipping rates, or services.",
-    errorGeneric: "Connection error. Please try again."
+    rights: "© 2024 AponyGroup. All rights reserved."
   },
   [Language.ZH]: {
     navHome: "首页",
@@ -306,16 +272,6 @@ export const STRINGS: Record<Language, TranslationResource> = {
     trackingResultMock: "状态：运输中 - 已到达分拨中心 (Los Angeles, CA)",
 
     footerAbout: "AponyGroup 是一家领先的物流服务商，专注于海外仓储和全球分销服务。",
-    rights: "© 2024 AponyGroup. 保留所有权利。",
-
-    chatTitle: "AponyGroup 客服",
-    chatSubtitle: "AI 智能助手",
-    placeholder: "咨询运费、查询单号...",
-    send: "发送",
-    clear: "清空",
-    loading: "思考中...",
-    welcomeTitle: "有什么可以帮您？",
-    welcomeText: "我是 AponyGroup 的 AI 助手。您可以咨询关于仓库位置、物流时效或业务合作的问题。",
-    errorGeneric: "连接错误，请重试。"
+    rights: "© 2024 AponyGroup. 保留所有权利。"
   }
 };

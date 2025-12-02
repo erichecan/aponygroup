@@ -65,24 +65,6 @@ docker build -t ${IMAGE_NAME}:latest .
 echo "📤 推送镜像到 GCP Container Registry..."
 docker push ${IMAGE_NAME}:latest
 
-# 检查是否提供了 API key
-if [ -z "$GEMINI_API_KEY" ]; then
-    echo "⚠️  警告: 未设置 GEMINI_API_KEY 环境变量"
-    echo "   请在部署后手动设置环境变量，或使用以下命令："
-    echo "   gcloud run services update ${SERVICE_NAME} \\"
-    echo "     --region ${REGION} \\"
-    echo "     --update-env-vars GEMINI_API_KEY=your_api_key_here"
-    echo ""
-    read -p "是否继续部署? (y/n) " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
-    fi
-    ENV_VARS=""
-else
-    ENV_VARS="--set-env-vars GEMINI_API_KEY=${GEMINI_API_KEY}"
-fi
-
 # 部署到 Cloud Run（免费层优化配置）
 echo "🚀 部署到 Cloud Run（免费层配置：256Mi 内存，0.5 CPU）..."
 gcloud run deploy ${SERVICE_NAME} \
@@ -97,7 +79,6 @@ gcloud run deploy ${SERVICE_NAME} \
     --max-instances 5 \
     --timeout 300 \
     --concurrency 80 \
-    ${ENV_VARS} \
     --project ${PROJECT_ID}
 
 # 获取服务 URL
