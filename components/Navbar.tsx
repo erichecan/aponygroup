@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
             className="cursor-pointer" 
             onClick={() => handleNavClick('home')}
           >
-            <Logo size="md" showText={true} />
+            <Logo size="md" showText={false} />
           </div>
 
           {/* Desktop Menu */}

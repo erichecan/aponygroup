@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ language, setPage }) => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="mb-6">
-              <Logo size="sm" showText={true} />
+              <Logo size="sm" showText={false} />
             </div>
             <p className="max-w-xs text-slate-400 leading-relaxed mb-6">
               {t.footerAbout}
