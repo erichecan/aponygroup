@@ -31,6 +31,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     },
     dropshipping: {
       // 一件代发/订单履约图片 - 2024-12-19 17:30:00
+      // 使用订单处理和包装场景的图片
       src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
       fallback: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1200&q=80"
     }
