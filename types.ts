@@ -39,6 +39,7 @@ export interface TranslationResource {
   navAbout: string;
   navContact: string;
   navTracking: string;
+  navCustomerPortal: string; // 客户自助下单 - 2024-12-19 15:30:00
   navLogin: string;
   navFAQ: string;
   navCases: string;
@@ -79,6 +80,10 @@ export interface TranslationResource {
   serviceFbaTitle: string;
   serviceFbaDesc: string;
   serviceFbaPoints: string[];
+
+  serviceDropshippingTitle: string; // 一件代发服务 - 2024-12-19 17:30:00
+  serviceDropshippingDesc: string;
+  serviceDropshippingPoints: string[];
 
   // About Page
   aboutTitle: string;
@@ -168,6 +173,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navAbout: "About Us",
     navContact: "Contact",
     navTracking: "Track Order",
+    navCustomerPortal: "Customer Portal", // 2024-12-19 15:30:00
     navLogin: "System Login",
     navFAQ: "FAQ",
     navCases: "Case Studies",
@@ -224,6 +230,15 @@ export const STRINGS: Record<Language, TranslationResource> = {
       "FBA Transfer/Replenishment",
       "Removal Order Handling",
       "Transit Warehousing"
+    ],
+
+    serviceDropshippingTitle: "Dropshipping Services", // 2024-12-19 17:30:00
+    serviceDropshippingDesc: "Streamline your e-commerce operations with our comprehensive dropshipping fulfillment services. We handle order processing, packaging, and shipping directly to your customers, eliminating the need for inventory management and reducing upfront costs.",
+    serviceDropshippingPoints: [
+      "Zero Inventory Investment",
+      "Automated Order Processing",
+      "Custom Branding & Packaging",
+      "Real-time Order Tracking"
     ],
 
     // About Page
@@ -465,6 +480,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navAbout: "关于我们",
     navContact: "联系我们",
     navTracking: "运单追踪",
+    navCustomerPortal: "客户自助下单", // 2024-12-19 15:30:00
     navLogin: "系统登录",
     navFAQ: "常见问题",
     navCases: "成功案例",
@@ -521,6 +537,15 @@ export const STRINGS: Record<Language, TranslationResource> = {
       "FBA 中转补货",
       "移除订单处理",
       "暂存与周转"
+    ],
+
+    serviceDropshippingTitle: "一件代发服务", // 2024-12-19 17:30:00
+    serviceDropshippingDesc: "通过我们的一件代发履约服务，简化您的电商运营。我们处理订单处理、包装和直接发货给您的客户，无需库存管理，降低前期成本。",
+    serviceDropshippingPoints: [
+      "零库存投资",
+      "自动化订单处理",
+      "定制品牌包装",
+      "实时订单追踪"
     ],
 
     // About Page

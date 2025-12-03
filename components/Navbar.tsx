@@ -62,6 +62,15 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
                 {link.label}
               </button>
             ))}
+            {/* 客户自助下单外部链接 - 2024-12-19 15:30:00 */}
+            <a
+              href="https://tms-frontend-v4estohola-df.a.run.app/customer/portal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-lg font-medium transition-all text-slate-600 hover:text-[#FF6B35] hover:bg-orange-50"
+            >
+              {t.navCustomerPortal}
+            </a>
             
             <div className="flex items-center gap-3 pl-4 border-l border-slate-200 ml-3">
               <button 
@@ -116,6 +125,15 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
                 {link.label}
               </button>
             ))}
+            {/* 客户自助下单外部链接 - 2024-12-19 15:30:00 */}
+            <a
+              href="https://tms-frontend-v4estohola-df.a.run.app/customer/portal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-left px-3 py-3 text-base font-medium rounded-md text-slate-600 hover:bg-orange-50"
+            >
+              {t.navCustomerPortal}
+            </a>
             <button
                onClick={() => handleNavClick('contact')}
                className="block w-full text-left px-3 py-3 text-base font-medium text-[#FF6B35] hover:bg-orange-50 rounded-md"

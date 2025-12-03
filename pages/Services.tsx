@@ -1,5 +1,5 @@
 import React from 'react';
-import { Warehouse, Ship, Database, Box, Check } from 'lucide-react';
+import { Warehouse, Ship, Database, Box, Package, Check } from 'lucide-react'; // 添加Package图标用于一件代发 - 2024-12-19 17:30:00
 import { Language, STRINGS } from '../types';
 import { ImageWithFallback } from '../components/ImageWithFallback';
 
@@ -28,6 +28,11 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       // 亚马逊仓库/物流中心图片 - 2024-12-19 16:45:00
       src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
       fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80"
+    },
+    dropshipping: {
+      // 一件代发/订单履约图片 - 2024-12-19 17:30:00
+      src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+      fallback: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1200&q=80"
     }
   };
 
@@ -124,6 +129,14 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         icon={Box}
         align="right"
         imageKey="fba"
+      />
+
+      <ServiceSection 
+        title={t.serviceDropshippingTitle}
+        desc={t.serviceDropshippingDesc}
+        points={t.serviceDropshippingPoints}
+        icon={Package}
+        imageKey="dropshipping"
       />
     </div>
   );
