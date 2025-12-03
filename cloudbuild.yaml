@@ -44,9 +44,8 @@ steps:
       - '--concurrency'
       - '80'
 
-# 镜像选项（使用标准机器类型以节省构建时间）
+# 镜像选项
 options:
-  machineType: 'E2_STANDARD_2'
   logging: CLOUD_LOGGING_ONLY
 
 # 超时设置（减少到 10 分钟）
