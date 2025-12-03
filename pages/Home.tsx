@@ -159,21 +159,22 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
             
             <div className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden relative shadow-2xl group">
+                {/* 4PL Vision Image - 2024-12-19 16:20:00 - 使用 canvas-design 生成的体现 4PL 愿景的图片 */}
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=1200&q=80"
+                  src="/assets/hero/4pl-vision.png"
                   fallbackSrc="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80"
-                  alt="Modern warehouse interior with organized shelves"
+                  alt="AponyGroup 4PL Excellence - Integrated Logistics Network"
                   className="w-full h-full"
                   objectFit="cover"
                 />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                {/* Gradient overlay - 轻微叠加以保持可读性 */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <div className="flex items-end justify-between">
                     <div className="flex flex-col gap-2 text-white">
-                      <div className="text-sm font-semibold opacity-90">Modern Warehouse</div>
-                      <div className="text-xs opacity-75">99.9% Accuracy</div>
+                      <div className="text-sm font-semibold opacity-90">4PL Excellence</div>
+                      <div className="text-xs opacity-75">Integrated Logistics Network</div>
                     </div>
                     <div className="w-16 h-16 bg-[#FF6B35] rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
                       <Warehouse size={32} />
