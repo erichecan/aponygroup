@@ -48,7 +48,7 @@ steps:
       - '--timeout'
       - '300'
       - '--concurrency'
-      - '80'
+      - '1'
 
 # 镜像选项
 options:
