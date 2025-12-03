@@ -172,7 +172,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navWarehousing: "Warehousing",
     navAbout: "About Us",
     navContact: "Contact",
-    navTracking: "Track Order",
+    navTracking: "Self Service", // 2024-12-19 18:50:00 - 改为自助服务
     navCustomerPortal: "Customer Portal", // 2024-12-19 15:30:00
     navLogin: "System Login",
     navFAQ: "FAQ",
@@ -479,7 +479,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navWarehousing: "海外仓储",
     navAbout: "关于我们",
     navContact: "联系我们",
-    navTracking: "运单追踪",
+    navTracking: "自助服务", // 2024-12-19 18:50:00 - 改为自助服务
     navCustomerPortal: "客户自助下单", // 2024-12-19 15:30:00
     navLogin: "系统登录",
     navFAQ: "常见问题",
