@@ -114,66 +114,67 @@ export const Cases: React.FC<CasesProps> = ({ language }) => {
           {filteredCases.map((caseItem) => {
             const caseImage = getCaseImage(caseItem.category);
             return (
-            <div
-              key={caseItem.id}
-              className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all cursor-pointer group"
-              onClick={() => setSelectedCase(caseItem)}
-            >
-              {/* Case Image - 2024-12-19 15:30:00 */}
-              <div className="aspect-video relative overflow-hidden">
-                <ImageWithFallback
-                  src={caseImage.src}
-                  fallbackSrc={caseImage.fallback}
-                  alt={caseItem.title}
-                  className="w-full h-full"
-                  objectFit="cover"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm bg-white/90 ${getCategoryColor(caseItem.category)}`}>
-                    {filterOptions.find(opt => opt.id === caseItem.category)?.label}
-                  </span>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </div>
-
-              {/* Case Header */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#FF6B35] transition-colors">
-                  {caseItem.title}
-                </h3>
-
-              {/* Case Preview */}
-              <div>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="text-sm font-semibold text-slate-500 mb-1">{t.caseClientBackground}</h4>
-                    <p className="text-slate-700 text-sm line-clamp-2">{caseItem.clientBackground}</p>
+              <div
+                key={caseItem.id}
+                className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all cursor-pointer group"
+                onClick={() => setSelectedCase(caseItem)}
+              >
+                {/* Case Image - 2024-12-19 15:30:00 */}
+                <div className="aspect-video relative overflow-hidden">
+                  <ImageWithFallback
+                    src={caseImage.src}
+                    fallbackSrc={caseImage.fallback}
+                    alt={caseItem.title}
+                    className="w-full h-full"
+                    objectFit="cover"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm bg-white/90 ${getCategoryColor(caseItem.category)}`}>
+                      {filterOptions.find(opt => opt.id === caseItem.category)?.label}
+                    </span>
                   </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-slate-500 mb-1">{t.caseChallenge}</h4>
-                    <p className="text-slate-700 text-sm line-clamp-2">{caseItem.challenge}</p>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
 
-                {/* Metrics Preview */}
-                {caseItem.metrics && caseItem.metrics.length > 0 && (
-                  <div className="mt-4 pt-4 border-t border-slate-100">
-                    <div className="flex flex-wrap gap-2">
-                      {caseItem.metrics.slice(0, 2).map((metric, idx) => (
-                        <span key={idx} className="px-2 py-1 bg-green-50 text-green-700 text-xs font-medium rounded">
-                          {metric}
-                        </span>
-                      ))}
+                {/* Case Header */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#FF6B35] transition-colors">
+                    {caseItem.title}
+                  </h3>
+
+                  {/* Case Preview */}
+                  <div>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-sm font-semibold text-slate-500 mb-1">{t.caseClientBackground}</h4>
+                        <p className="text-slate-700 text-sm line-clamp-2">{caseItem.clientBackground}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-slate-500 mb-1">{t.caseChallenge}</h4>
+                        <p className="text-slate-700 text-sm line-clamp-2">{caseItem.challenge}</p>
+                      </div>
                     </div>
-                  </div>
-                )}
 
-                <button className="mt-4 text-[#FF6B35] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                  {t.caseViewDetails}
-                  <TrendingUp size={16} />
-                </button>
+                    {/* Metrics Preview */}
+                    {caseItem.metrics && caseItem.metrics.length > 0 && (
+                      <div className="mt-4 pt-4 border-t border-slate-100">
+                        <div className="flex flex-wrap gap-2">
+                          {caseItem.metrics.slice(0, 2).map((metric, idx) => (
+                            <span key={idx} className="px-2 py-1 bg-green-50 text-green-700 text-xs font-medium rounded">
+                              {metric}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <button className="mt-4 text-[#FF6B35] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                      {t.caseViewDetails}
+                      <TrendingUp size={16} />
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
             );
           })}
         </div>
