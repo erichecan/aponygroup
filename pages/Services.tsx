@@ -13,8 +13,9 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
   // 服务图片映射 - 2024-12-19 15:20:00
   const serviceImages: Record<string, { src: string; fallback: string }> = {
     warehousing: {
-      src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=1200&q=80",
-      fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80"
+      // 美加仓储图片 - 2024-12-19 17:50:00 - 使用展示美加仓储设施的图片
+      src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80",
+      fallback: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=1200&q=80"
     },
     logistics: {
       src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1200&q=80",
@@ -30,10 +31,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80"
     },
     dropshipping: {
-      // 一件代发/订单履约图片 - 2024-12-19 17:30:00
-      // 使用订单处理和包装场景的图片
-      src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-      fallback: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1200&q=80"
+      // 一件代发/仓库贴标签图片 - 2024-12-19 17:50:00
+      // 使用仓库贴标签、扫描条码、订单处理的图片
+      src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1200&q=80",
+      fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80"
     }
   };
 

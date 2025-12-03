@@ -159,11 +159,11 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
             
             <div className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden relative shadow-2xl group">
-                {/* 4PL Vision Image - 2024-12-19 17:45:00 - 使用本地生成的4PL愿景图片 */}
+                {/* 科技物流图片 - 2024-12-19 17:50:00 - 使用能体现科技物流的图片（自动化仓储、智能物流系统） */}
                 <ImageWithFallback
-                  src="/assets/hero/4pl-vision.png"
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"
                   fallbackSrc="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
-                  alt="AponyGroup 4PL Excellence - Integrated Logistics Network"
+                  alt="AponyGroup Technology Logistics - Smart Warehouse Management System"
                   className="w-full h-full"
                   objectFit="cover"
                 />
