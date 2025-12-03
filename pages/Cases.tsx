@@ -53,9 +53,10 @@ export const Cases: React.FC<CasesProps> = ({ language }) => {
           fallback: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&q=80"
         };
       case 'warehousing':
+        // 零售行业图片 - 2024-12-19 16:45:00
         return {
-          src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&q=80",
-          fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+          src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"
         };
       case 'transport':
         return {

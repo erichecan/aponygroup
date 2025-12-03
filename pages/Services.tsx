@@ -25,7 +25,8 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       fallback: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"
     },
     fba: {
-      src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+      // 亚马逊仓库/物流中心图片 - 2024-12-19 16:45:00
+      src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
       fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80"
     }
   };
