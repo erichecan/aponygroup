@@ -4,13 +4,19 @@
 # 优化为免费层配置：最小资源使用，使用 Artifact Registry
 
 steps:
-  # 构建 Docker 镜像
+  # 构建 Docker 镜像 - 2024-12-19 16:15:00
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$SHORT_SHA', '-t', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:latest', '.']
+    args: 
+      - 'build'
+      - '-t'
+      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$BUILD_ID'
+      - '-t'
+      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:latest'
+      - '.'
 
   # 推送镜像到 Artifact Registry (免费层：0.5GB 存储免费)
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$SHORT_SHA']
+    args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$BUILD_ID']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:latest']
@@ -23,7 +29,7 @@ steps:
       - 'deploy'
       - 'apony-website'
       - '--image'
-      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$SHORT_SHA'
+      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$BUILD_ID'
       - '--region'
       - 'asia-east1'
       - '--platform'
