@@ -1,6 +1,7 @@
 import React from 'react';
 import { Warehouse, Plane, Ship, BarChart3, ArrowRight, PackageCheck, CheckCircle2 } from 'lucide-react';
 import { Language, STRINGS, Page } from '../types';
+import { ImageWithFallback } from '../components/ImageWithFallback';
 
 interface HomeProps {
   language: Language;
@@ -12,22 +13,33 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
 
   return (
     <div className="animate-fade-in">
-      {/* Hero Section */}
-      <section className="relative pt-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-orange-50">
-        <div className="absolute inset-0 opacity-30 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[128px] opacity-20"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FF6B35] rounded-full blur-[128px] opacity-10"></div>
+      {/* Hero Section - 2024-12-19 15:15:00 */}
+      <section className="relative pt-20 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1920&q=80"
+            fallbackSrc="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80"
+            alt="Modern warehouse and logistics"
+            className="w-full h-full"
+            objectFit="cover"
+            lazy={false}
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-800/60 to-orange-900/50"></div>
+          {/* Orange accent overlay */}
+          <div className="absolute inset-0 bg-[#FF6B35]/10"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-32 flex flex-col items-center text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-32 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B35]/20 border border-[#FF6B35]/50 text-[#FF6B35] text-xs font-semibold uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-[#FF6B35] animate-pulse"></span>
             {language === 'en' ? 'US & Canada Logistics Specialist' : '美加物流专家'}
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight mb-8 max-w-4xl leading-[1.1]">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8 max-w-4xl leading-[1.1] drop-shadow-lg">
             {t.heroTitle}
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-100 max-w-2xl mb-10 leading-relaxed drop-shadow-md">
             {t.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -146,20 +158,28 @@ export const Home: React.FC<HomeProps> = ({ language, setPage }) => {
             </div>
             
             <div className="relative">
-              <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-2xl">
-                 <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300">
-                    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#475569 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
-                    
-                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-slate-800/5 backdrop-blur-sm border-t border-white/20 p-8 flex items-end justify-between">
-                       <div className="flex flex-col gap-2">
-                          <div className="w-32 h-4 bg-slate-400/50 rounded-full"></div>
-                          <div className="w-24 h-4 bg-slate-400/30 rounded-full"></div>
-                       </div>
-                       <div className="w-16 h-16 bg-[#FF6B35] rounded-2xl flex items-center justify-center text-white shadow-lg">
-                          <Warehouse size={32} />
-                       </div>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative shadow-2xl group">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=1200&q=80"
+                  fallbackSrc="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80"
+                  alt="Modern warehouse interior with organized shelves"
+                  className="w-full h-full"
+                  objectFit="cover"
+                />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                {/* Content overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <div className="flex items-end justify-between">
+                    <div className="flex flex-col gap-2 text-white">
+                      <div className="text-sm font-semibold opacity-90">Modern Warehouse</div>
+                      <div className="text-xs opacity-75">99.9% Accuracy</div>
                     </div>
-                 </div>
+                    <div className="w-16 h-16 bg-[#FF6B35] rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                      <Warehouse size={32} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

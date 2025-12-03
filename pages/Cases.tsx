@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Briefcase, TrendingUp, CheckCircle2, Filter, X } from 'lucide-react';
 import { Language, STRINGS, CaseStudy } from '../types';
+import { ImageWithFallback } from '../components/ImageWithFallback';
 
 interface CasesProps {
   language: Language;
@@ -35,6 +36,42 @@ export const Cases: React.FC<CasesProps> = ({ language }) => {
       case 'transport': return 'bg-orange-100 text-orange-700';
       case 'comprehensive': return 'bg-indigo-100 text-indigo-700';
       default: return 'bg-slate-100 text-slate-700';
+    }
+  };
+
+  // 案例图片映射 - 2024-12-19 15:30:00
+  const getCaseImage = (category: string) => {
+    switch (category) {
+      case 'clearance':
+        return {
+          src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+        };
+      case 'landing':
+        return {
+          src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&q=80"
+        };
+      case 'warehousing':
+        return {
+          src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+        };
+      case 'transport':
+        return {
+          src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+        };
+      case 'comprehensive':
+        return {
+          src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+        };
+      default:
+        return {
+          src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&q=80"
+        };
     }
   };
 
@@ -74,26 +111,39 @@ export const Cases: React.FC<CasesProps> = ({ language }) => {
       {/* Cases Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCases.map((caseItem) => (
+          {filteredCases.map((caseItem) => {
+            const caseImage = getCaseImage(caseItem.category);
+            return (
             <div
               key={caseItem.id}
               className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all cursor-pointer group"
               onClick={() => setSelectedCase(caseItem)}
             >
-              {/* Case Header */}
-              <div className="p-6 border-b border-slate-100">
-                <div className="flex items-start justify-between mb-3">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(caseItem.category)}`}>
+              {/* Case Image - 2024-12-19 15:30:00 */}
+              <div className="aspect-video relative overflow-hidden">
+                <ImageWithFallback
+                  src={caseImage.src}
+                  fallbackSrc={caseImage.fallback}
+                  alt={caseItem.title}
+                  className="w-full h-full"
+                  objectFit="cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm bg-white/90 ${getCategoryColor(caseItem.category)}`}>
                     {filterOptions.find(opt => opt.id === caseItem.category)?.label}
                   </span>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </div>
+
+              {/* Case Header */}
+              <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#FF6B35] transition-colors">
                   {caseItem.title}
                 </h3>
-              </div>
 
               {/* Case Preview */}
-              <div className="p-6">
+              <div>
                 <div className="space-y-4">
                   <div>
                     <h4 className="text-sm font-semibold text-slate-500 mb-1">{t.caseClientBackground}</h4>
@@ -124,7 +174,8 @@ export const Cases: React.FC<CasesProps> = ({ language }) => {
                 </button>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {filteredCases.length === 0 && (

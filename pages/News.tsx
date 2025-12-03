@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Newspaper, Calendar, ArrowRight, Filter, Clock } from 'lucide-react';
 import { Language, STRINGS, NewsItem, Page } from '../types';
+import { ImageWithFallback } from '../components/ImageWithFallback';
 
 interface NewsProps {
   language: Language;
@@ -57,6 +58,37 @@ export const News: React.FC<NewsProps> = ({ language, setPage }) => {
       .slice(0, 3);
   };
 
+  // 获取新闻图片 - 2024-12-19 15:35:00
+  const getNewsImage = (category: string) => {
+    switch (category) {
+      case 'company':
+        return {
+          src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+        };
+      case 'industry':
+        return {
+          src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+        };
+      case 'policy':
+        return {
+          src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80"
+        };
+      case 'knowledge':
+        return {
+          src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+        };
+      default:
+        return {
+          src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+          fallback: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&q=80"
+        };
+    }
+  };
+
   // 如果选择了新闻，显示详情
   if (selectedNews) {
     const relatedNews = getRelatedNews(selectedNews);
@@ -77,23 +109,33 @@ export const News: React.FC<NewsProps> = ({ language, setPage }) => {
         {/* News Detail */}
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-            {/* Header */}
-            <div className="p-8 border-b border-slate-100">
-              <div className="flex items-center gap-3 mb-4">
-                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(selectedNews.category)}`}>
-                  {filterOptions.find(opt => opt.id === selectedNews.category)?.label}
-                </span>
-                <div className="flex items-center gap-2 text-slate-500 text-sm">
-                  <Calendar size={16} />
-                  <span>{formatDate(selectedNews.publishDate)}</span>
+            {/* Header Image - 2024-12-19 15:35:00 */}
+            <div className="aspect-video relative overflow-hidden">
+              <ImageWithFallback
+                src={selectedNews.imageUrl || getNewsImage(selectedNews.category).src}
+                fallbackSrc={getNewsImage(selectedNews.category).fallback}
+                alt={selectedNews.title}
+                className="w-full h-full"
+                objectFit="cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm bg-white/20 ${getCategoryColor(selectedNews.category)}`}>
+                    {filterOptions.find(opt => opt.id === selectedNews.category)?.label}
+                  </span>
+                  <div className="flex items-center gap-2 text-white/90 text-sm">
+                    <Calendar size={16} />
+                    <span>{formatDate(selectedNews.publishDate)}</span>
+                  </div>
                 </div>
+                <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                  {selectedNews.title}
+                </h1>
+                <p className="text-lg text-white/90 leading-relaxed">
+                  {selectedNews.summary}
+                </p>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                {selectedNews.title}
-              </h1>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                {selectedNews.summary}
-              </p>
             </div>
 
             {/* Content */}
@@ -117,12 +159,21 @@ export const News: React.FC<NewsProps> = ({ language, setPage }) => {
                     onClick={() => setSelectedNews(news)}
                     className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition-all cursor-pointer group"
                   >
-                    <div className="p-5">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className={`px-2 py-1 rounded text-xs font-semibold ${getCategoryColor(news.category)}`}>
+                    <div className="aspect-video relative overflow-hidden">
+                      <ImageWithFallback
+                        src={news.imageUrl || getNewsImage(news.category).src}
+                        fallbackSrc={getNewsImage(news.category).fallback}
+                        alt={news.title}
+                        className="w-full h-full"
+                        objectFit="cover"
+                      />
+                      <div className="absolute top-2 left-2">
+                        <span className={`px-2 py-1 rounded text-xs font-semibold backdrop-blur-sm bg-white/90 ${getCategoryColor(news.category)}`}>
                           {filterOptions.find(opt => opt.id === news.category)?.label}
                         </span>
                       </div>
+                    </div>
+                    <div className="p-5">
                       <h3 className="font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-[#FF6B35] transition-colors">
                         {news.title}
                       </h3>
@@ -187,16 +238,32 @@ export const News: React.FC<NewsProps> = ({ language, setPage }) => {
               onClick={() => setSelectedNews(news)}
               className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all cursor-pointer group"
             >
-              {/* News Image Placeholder */}
-              {news.imageUrl ? (
-                <div className="aspect-video bg-slate-200 relative overflow-hidden">
-                  <img src={news.imageUrl} alt={news.title} className="w-full h-full object-cover" />
+              {/* News Image - 2024-12-19 15:35:00 */}
+              <div className="aspect-video relative overflow-hidden">
+                {news.imageUrl ? (
+                  <ImageWithFallback
+                    src={news.imageUrl}
+                    fallbackSrc={getNewsImage(news.category).fallback}
+                    alt={news.title}
+                    className="w-full h-full"
+                    objectFit="cover"
+                  />
+                ) : (
+                  <ImageWithFallback
+                    src={getNewsImage(news.category).src}
+                    fallbackSrc={getNewsImage(news.category).fallback}
+                    alt={news.title}
+                    className="w-full h-full"
+                    objectFit="cover"
+                  />
+                )}
+                <div className="absolute top-4 left-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm bg-white/90 ${getCategoryColor(news.category)}`}>
+                    {filterOptions.find(opt => opt.id === news.category)?.label}
+                  </span>
                 </div>
-              ) : (
-                <div className="aspect-video bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-                  <Newspaper size={48} className="text-slate-400" />
-                </div>
-              )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </div>
 
               {/* News Content */}
               <div className="p-6">
