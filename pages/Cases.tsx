@@ -39,31 +39,35 @@ export const Cases: React.FC<CasesProps> = ({ language }) => {
     }
   };
 
-  // 案例图片映射 - 2024-12-19 15:30:00
+  // 案例图片映射 - 2024-12-19 19:10:00 - 更新所有类别图片
   const getCaseImage = (category: string) => {
     switch (category) {
       case 'clearance':
+        // 清关服务：海关检查/清关场景
         return {
           src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
           fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
         };
       case 'landing':
+        // 落地服务：港口/码头场景
         return {
           src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
           fallback: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&q=80"
         };
       case 'warehousing':
-        // 零售行业图片 - 2024-12-19 16:45:00
+        // 仓储服务：零售行业/仓库场景 - 2024-12-19 16:45:00
         return {
           src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
           fallback: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"
         };
       case 'transport':
+        // 运输服务：卡车/物流运输场景
         return {
           src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
           fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
         };
       case 'comprehensive':
+        // 综合解决方案：物流网络/供应链场景
         return {
           src: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
           fallback: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"

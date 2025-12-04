@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Newspaper, Calendar, ArrowRight, Filter, Clock } from 'lucide-react';
 import { Language, STRINGS, NewsItem, Page } from '../types';
 import { ImageWithFallback } from '../components/ImageWithFallback';
+import { loadNewsFromJSON, mergeNewsData } from '../services/newsService';
 
 interface NewsProps {
   language: Language;
@@ -14,11 +15,34 @@ export const News: React.FC<NewsProps> = ({ language, setPage }) => {
   const t = STRINGS[language];
   const [selectedFilter, setSelectedFilter] = useState<NewsFilter>('all');
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
+  const [allNewsItems, setAllNewsItems] = useState<NewsItem[]>(t.newsItems);
+  const [isLoadingNews, setIsLoadingNews] = useState(true);
+
+  // 加载动态新闻数据 - 2025-01-27
+  useEffect(() => {
+    const loadNews = async () => {
+      try {
+        setIsLoadingNews(true);
+        const dynamicNews = await loadNewsFromJSON();
+        const mergedNews = mergeNewsData(dynamicNews, t.newsItems);
+        setAllNewsItems(mergedNews);
+      } catch (error) {
+        console.error('Failed to load dynamic news, using static data:', error);
+        // 如果加载失败，使用静态数据
+        setAllNewsItems(t.newsItems);
+      } finally {
+        setIsLoadingNews(false);
+      }
+    };
+
+    loadNews();
+  }, [t.newsItems]);
 
   // 获取过滤后的新闻 - 2024-12-19 14:40:00
+  // Updated: 2025-01-27 - 使用动态加载的新闻数据
   const filteredNews = selectedFilter === 'all'
-    ? t.newsItems
-    : t.newsItems.filter(news => news.category === selectedFilter);
+    ? allNewsItems
+    : allNewsItems.filter(news => news.category === selectedFilter);
 
   // 按日期排序（最新的在前）
   const sortedNews = [...filteredNews].sort((a, b) => 
@@ -53,7 +77,7 @@ export const News: React.FC<NewsProps> = ({ language, setPage }) => {
   };
 
   const getRelatedNews = (currentNews: NewsItem) => {
-    return t.newsItems
+    return allNewsItems
       .filter(news => news.id !== currentNews.id && news.category === currentNews.category)
       .slice(0, 3);
   };

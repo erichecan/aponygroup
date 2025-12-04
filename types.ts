@@ -423,6 +423,46 @@ export const STRINGS: Record<Language, TranslationResource> = {
         solution: "We set up a network of strategically located warehouses, implemented our WMS for real-time inventory visibility, and optimized fulfillment routes.",
         result: "Achieved 24-hour order fulfillment SLA. Reduced shipping costs by 30% through optimized warehouse locations and improved inventory turnover by 40%.",
         metrics: ["24-hour fulfillment", "30% cost reduction", "40% inventory improvement"]
+      },
+      {
+        id: "case4",
+        title: "Import Company: Efficient Port Landing & Distribution",
+        category: "landing",
+        clientBackground: "An import company handling large-volume shipments from Asia to US West Coast ports, requiring fast port landing and immediate distribution.",
+        challenge: "Experiencing delays in port landing procedures, high demurrage costs, and slow cargo release affecting customer delivery schedules.",
+        solution: "We established direct relationships with port authorities, implemented pre-arrival documentation processing, and set up dedicated port landing teams for immediate cargo handling and release.",
+        result: "Reduced port landing time from 7 days to 2 days. Eliminated 90% of demurrage charges and improved cargo release speed by 60%. Customer satisfaction increased significantly.",
+        metrics: ["2 days landing time", "90% demurrage reduction", "60% faster release"]
+      },
+      {
+        id: "case5",
+        title: "E-commerce Seller: Cross-Border US-Canada Transportation",
+        category: "transport",
+        clientBackground: "An e-commerce seller shipping products from US warehouses to Canadian customers, facing high shipping costs and long transit times.",
+        challenge: "Cross-border shipping costs were prohibitive, customs documentation was complex, and delivery times exceeded customer expectations.",
+        solution: "We optimized cross-border routes, consolidated shipments for better rates, handled all customs documentation, and established partnerships with Canadian carriers for faster last-mile delivery.",
+        result: "Reduced cross-border shipping costs by 35%. Cut transit time from 10 days to 4 days. Achieved 98% on-time delivery rate to Canadian customers.",
+        metrics: ["35% cost reduction", "4 days transit time", "98% on-time delivery"]
+      },
+      {
+        id: "case6",
+        title: "FBA Seller: Amazon Fulfillment Optimization",
+        category: "warehousing",
+        clientBackground: "A growing FBA seller managing inventory across multiple Amazon fulfillment centers, struggling with inventory allocation and replenishment timing.",
+        challenge: "Inefficient inventory distribution led to stockouts in some regions while overstocking in others, causing lost sales and increased storage fees.",
+        solution: "We provided FBA prep and transshipment services, optimized inventory allocation based on sales data, and implemented just-in-time replenishment strategies.",
+        result: "Eliminated stockouts in high-demand regions. Reduced Amazon storage fees by 28% through better inventory management. Increased sales velocity by 45%.",
+        metrics: ["Zero stockouts", "28% fee reduction", "45% sales increase"]
+      },
+      {
+        id: "case7",
+        title: "Dropshipping Business: Scalable Order Fulfillment",
+        category: "comprehensive",
+        clientBackground: "A dropshipping business experiencing rapid growth, needing a scalable fulfillment solution without upfront inventory investment.",
+        challenge: "Manual order processing couldn't keep up with growth, packaging quality was inconsistent, and shipping costs were eating into margins.",
+        solution: "We implemented our automated dropshipping fulfillment service with custom branded packaging, integrated with their e-commerce platform for seamless order processing, and negotiated better shipping rates.",
+        result: "Scaled from 50 to 500 orders per day without additional overhead. Reduced fulfillment costs by 40%. Improved customer satisfaction with consistent packaging and faster shipping.",
+        metrics: ["10x order capacity", "40% cost reduction", "99% customer satisfaction"]
       }
     ],
 
@@ -730,6 +770,46 @@ export const STRINGS: Record<Language, TranslationResource> = {
         solution: "我们建立了战略定位的仓库网络，实施WMS以实现实时库存可见性，并优化履行路线。",
         result: "实现了24小时订单履行SLA。通过优化的仓库位置，运输成本降低了30%，库存周转率提高了40%。",
         metrics: ["24小时履行", "成本降低30%", "库存改善40%"]
+      },
+      {
+        id: "case4",
+        title: "进口公司：高效港口落地与分销",
+        category: "landing",
+        clientBackground: "一家从亚洲向美国西海岸港口处理大批量货物的进口公司，需要快速港口落地和即时分销。",
+        challenge: "港口落地程序延误，滞期费用高昂，货物放行缓慢，影响客户交付时间表。",
+        solution: "我们与港口当局建立直接关系，实施到港前文件处理，并设立专门的港口落地团队，实现即时货物处理和放行。",
+        result: "将港口落地时间从7天减少到2天。消除了90%的滞期费用，货物放行速度提高了60%。客户满意度显著提升。",
+        metrics: ["2天落地时间", "减少90%滞期费", "放行速度提升60%"]
+      },
+      {
+        id: "case5",
+        title: "电商卖家：美加跨境运输优化",
+        category: "transport",
+        clientBackground: "一家从美国仓库向加拿大客户发货的电商卖家，面临高昂的运输成本和漫长的运输时间。",
+        challenge: "跨境运输成本过高，海关文件复杂，交付时间超出客户预期。",
+        solution: "我们优化了跨境路线，整合货物以获得更好的费率，处理所有海关文件，并与加拿大承运商建立合作伙伴关系，实现更快的最后一公里交付。",
+        result: "跨境运输成本降低了35%。运输时间从10天缩短到4天。对加拿大客户的准时交付率达到98%。",
+        metrics: ["成本降低35%", "4天运输时间", "98%准时交付"]
+      },
+      {
+        id: "case6",
+        title: "FBA卖家：亚马逊履约优化",
+        category: "warehousing",
+        clientBackground: "一家在多个亚马逊履约中心管理库存的成长型FBA卖家，在库存分配和补货时机方面遇到困难。",
+        challenge: "低效的库存分配导致某些地区缺货，而其他地区库存过多，造成销售损失和存储费用增加。",
+        solution: "我们提供FBA预处理和中转服务，根据销售数据优化库存分配，并实施准时补货策略。",
+        result: "消除了高需求地区的缺货情况。通过更好的库存管理，亚马逊存储费用降低了28%。销售速度提高了45%。",
+        metrics: ["零缺货", "费用降低28%", "销售提升45%"]
+      },
+      {
+        id: "case7",
+        title: "一件代发业务：可扩展订单履约",
+        category: "comprehensive",
+        clientBackground: "一家快速成长的一件代发业务，需要可扩展的履约解决方案，无需前期库存投资。",
+        challenge: "手动订单处理无法跟上增长，包装质量不一致，运输成本侵蚀利润。",
+        solution: "我们实施了自动化一件代发履约服务，提供定制品牌包装，与他们的电商平台集成以实现无缝订单处理，并协商更好的运输费率。",
+        result: "从每天50个订单扩展到500个订单，无需额外开销。履约成本降低了40%。通过一致的包装和更快的运输提高了客户满意度。",
+        metrics: ["订单容量提升10倍", "成本降低40%", "99%客户满意度"]
       }
     ],
 
