@@ -15,12 +15,29 @@ export const Footer: React.FC<FooterProps> = ({ language, setPage }) => {
     <footer className="bg-black text-slate-300 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-5 gap-12 mb-12">
-          {/* Company Info */}
+          {/* Company Info - 2025-01-27 16:45:00 - 优化 Logo 显示区域 */}
           <div className="col-span-1 md:col-span-2">
-            <div className="mb-6">
-              <Logo size="sm" showText={false} />
+            {/* Logo 区域 - 使用 frontend-design 原则设计 */}
+            <div className="mb-10">
+              <div className="inline-block group">
+                {/* Logo 外层容器 - 添加精致视觉效果 */}
+                <div className="relative">
+                  {/* 装饰性背景光晕效果 */}
+                  <div className="absolute -inset-2 bg-white/5 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {/* Logo 主体 */}
+                  <div className="relative transform group-hover:scale-[1.02] transition-all duration-300 ease-out">
+                    <Logo 
+                      size="footer" 
+                      showText={false} 
+                      variant="white-bg" 
+                      className="drop-shadow-[0_4px_12px_rgba(255,255,255,0.15)] filter brightness-100 hover:brightness-110 transition-all duration-300" 
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="max-w-xs text-slate-400 leading-relaxed mb-6">
+            {/* 公司描述 */}
+            <p className="max-w-xs text-slate-400 leading-relaxed mb-6 text-sm">
               {t.footerAbout}
             </p>
           </div>
