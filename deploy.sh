@@ -5,11 +5,11 @@
 
 set -e
 
-PROJECT_ID="882380127696"
-SERVICE_NAME="apony-website"
+PROJECT_ID="gen-lang-client-0364422903"
+SERVICE_NAME="website"
 REGION="asia-east1"
 # 使用 Artifact Registry 而不是 Container Registry（免费层更友好）
-REPOSITORY="apony-website"
+REPOSITORY="website"
 IMAGE_NAME="asia-east1-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${SERVICE_NAME}"
 
 echo "🚀 开始部署 AponyGroup 网站到 GCP Cloud Run..."
@@ -57,9 +57,9 @@ if ! gcloud artifacts repositories describe ${REPOSITORY} \
         --project=${PROJECT_ID}
 fi
 
-# 构建 Docker 镜像
-echo "🔨 构建 Docker 镜像..."
-docker build -t ${IMAGE_NAME}:latest .
+# 构建 Docker 镜像（指定平台为 linux/amd64，Cloud Run 需要）- 2025-01-27
+echo "🔨 构建 Docker 镜像（linux/amd64 平台）..."
+docker build --platform linux/amd64 -t ${IMAGE_NAME}:latest .
 
 # 推送镜像
 echo "📤 推送镜像到 GCP Container Registry..."
@@ -74,7 +74,7 @@ gcloud run deploy ${SERVICE_NAME} \
     --allow-unauthenticated \
     --port 80 \
     --memory 256Mi \
-    --cpu 0.5 \
+    --cpu 1 \
     --min-instances 0 \
     --max-instances 5 \
     --timeout 300 \

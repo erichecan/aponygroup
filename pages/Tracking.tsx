@@ -14,10 +14,10 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
 
   const handleTrack = (e: React.FormEvent) => {
     e.preventDefault();
-    if(!trackingId) return;
+    if (!trackingId) return;
     setLoading(true);
     setResult(null);
-    
+
     // Simulate API call
     setTimeout(() => {
       setLoading(false);
@@ -26,16 +26,16 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
   };
 
   // 自助服务卡片组件 - 2024-12-19 18:50:00 - 使用 frontend-design 风格
-  const ServiceCard = ({ 
-    icon: Icon, 
-    badge, 
-    title, 
-    description, 
-    features, 
-    buttonText, 
+  const ServiceCard = ({
+    icon: Icon,
+    badge,
+    title,
+    description,
+    features,
+    buttonText,
     buttonHref,
     buttonOnClick,
-    children 
+    children
   }: {
     icon: React.ComponentType<{ size?: number; className?: string }>;
     badge: string;
@@ -50,7 +50,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
     <div className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden group hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
       {/* 顶部装饰条 */}
       <div className="h-2 bg-gradient-to-r from-[#FF6B35] via-orange-500 to-[#E55A2B]"></div>
-      
+
       <div className="p-8 md:p-10 flex-1 flex flex-col">
         {/* 图标和徽章区域 */}
         <div className="flex items-start justify-between mb-6">
@@ -75,7 +75,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
         <p className="text-slate-600 mb-6 text-base leading-relaxed">
           {description}
         </p>
-        
+
         {/* 功能特点 */}
         {features && features.length > 0 && (
           <div className="grid grid-cols-2 gap-3 mb-6">
@@ -106,10 +106,10 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
             >
               {/* 按钮背景动画 */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#E55A2B] to-[#FF6B35] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-              
+
               <span className="relative z-10 whitespace-nowrap">{buttonText}</span>
               <ArrowRight className="relative z-10 w-5 h-5 flex-shrink-0 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
-              
+
               {/* 按钮光效 */}
               <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
             </a>
@@ -121,7 +121,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
             >
               {/* 按钮背景动画 */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#E55A2B] to-[#FF6B35] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-              
+
               {loading ? (
                 <>
                   <div className="relative z-10 w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin flex-shrink-0"></div>
@@ -133,7 +133,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
                   <span className="relative z-10 whitespace-nowrap">{buttonText}</span>
                 </>
               )}
-              
+
               {/* 按钮光效 */}
               <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
             </button>
@@ -146,7 +146,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
             >
               {/* 按钮背景动画 */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#E55A2B] to-[#FF6B35] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-              
+
               {loading ? (
                 <>
                   <div className="relative z-10 w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin flex-shrink-0"></div>
@@ -158,7 +158,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
                   <span className="relative z-10 whitespace-nowrap">{buttonText}</span>
                 </>
               )}
-              
+
               {/* 按钮光效 */}
               <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
             </button>
@@ -177,8 +177,8 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
             {language === LangEnum.ZH ? '自助服务' : 'Self Service'}
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            {language === LangEnum.ZH 
-              ? '快速下单，实时追踪，一站式物流服务管理平台' 
+            {language === LangEnum.ZH
+              ? '快速下单，实时追踪，一站式物流服务管理平台'
               : 'Quick ordering, real-time tracking, one-stop logistics service management platform'}
           </p>
         </div>
@@ -192,8 +192,8 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
             icon={ShoppingCart}
             badge={language === LangEnum.ZH ? '自助服务' : 'Self-Service'}
             title={language === LangEnum.ZH ? '客户自助下单' : 'Customer Portal'}
-            description={language === LangEnum.ZH 
-              ? '快速下单，实时追踪，一站式物流服务管理平台。轻松管理您的订单，查看物流状态，享受便捷的物流体验。' 
+            description={language === LangEnum.ZH
+              ? '快速下单，实时追踪，一站式物流服务管理平台。轻松管理您的订单，查看物流状态，享受便捷的物流体验。'
               : 'Quick ordering, real-time tracking, one-stop logistics service management platform. Easily manage your orders, track shipments, and enjoy a seamless logistics experience.'}
             features={[
               { icon: '📦', text: language === LangEnum.ZH ? '快速下单' : 'Quick Order' },
@@ -201,7 +201,7 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
               { icon: '📊', text: language === LangEnum.ZH ? '数据管理' : 'Data Management' }
             ]}
             buttonText={language === LangEnum.ZH ? '立即下单' : 'Place Order'}
-            buttonHref="https://tms-frontend-v4estohola-df.a.run.app/customer/portal"
+            buttonHref="https://tms.aponygroup.com/customer/portal"
           />
 
           {/* 右侧：运单跟踪卡片 */}
@@ -209,8 +209,8 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
             icon={PackageSearch}
             badge={language === LangEnum.ZH ? '运单查询' : 'Track Order'}
             title={language === LangEnum.ZH ? '运单跟踪' : 'Track Shipment'}
-            description={language === LangEnum.ZH 
-              ? '输入您的追踪号码或订单ID，实时查询货物状态和物流信息，随时掌握您的货物位置。' 
+            description={language === LangEnum.ZH
+              ? '输入您的追踪号码或订单ID，实时查询货物状态和物流信息，随时掌握您的货物位置。'
               : 'Enter your tracking number or order ID to get real-time status updates and logistics information.'}
             features={[
               { icon: '🔍', text: language === LangEnum.ZH ? '快速查询' : 'Quick Search' },
@@ -223,8 +223,8 @@ export const Tracking: React.FC<TrackingProps> = ({ language }) => {
           >
             {/* 查询表单 */}
             <form onSubmit={handleTrack} className="space-y-4" id="tracking-form">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={trackingId}
                 onChange={(e) => setTrackingId(e.target.value)}
                 placeholder={t.trackingPlaceholder}

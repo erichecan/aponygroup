@@ -2,7 +2,7 @@
 
 ## 概述
 
-这个系统每天自动抓取物流行业相关新闻，并更新网站上的新闻内容。
+这个系统每周自动抓取物流行业相关新闻，并更新网站上的新闻内容。
 
 ## 架构说明
 
@@ -22,7 +22,7 @@
    - 可以通过 HTTP 或 Cloud Scheduler 触发
 
 4. **Cloud Scheduler**
-   - 每天自动触发抓取任务
+   - 每周自动触发抓取任务（每周一执行）
 
 ## 本地测试
 
@@ -77,7 +77,7 @@ gcloud functions deploy fetch-news \
 
 #### 步骤 2: 配置 Cloud Scheduler
 
-创建一个每天执行的调度任务：
+创建一个每周执行的调度任务：
 
 ```bash
 # 获取 Cloud Function 的 URL
@@ -87,13 +87,15 @@ FUNCTION_URL=$(gcloud functions describe fetch-news \
   --format 'value(serviceConfig.uri)' \
   --project 882380127696)
 
-# 创建调度任务（每天 UTC 时间 02:00 执行）
-gcloud scheduler jobs create http fetch-news-daily \
-  --schedule="0 2 * * *" \
+# 创建调度任务（每周一 UTC 时间 02:00 执行，北京时间 10:00）
+gcloud scheduler jobs create http fetch-news-weekly \
+  --schedule="0 2 * * 1" \
   --uri="$FUNCTION_URL" \
   --http-method=GET \
   --location=asia-east1 \
-  --project=882380127696
+  --project=882380127696 \
+  --description="每周自动抓取新闻（每周一 UTC 02:00）" \
+  --time-zone="UTC"
 ```
 
 ### 方法 2: 使用 Cloud Run Job（替代方案）
@@ -122,8 +124,8 @@ gcloud run jobs deploy news-fetcher \
 #### 步骤 3: 配置调度
 
 ```bash
-gcloud scheduler jobs create http fetch-news-daily \
-  --schedule="0 2 * * *" \
+gcloud scheduler jobs create http fetch-news-weekly \
+  --schedule="0 2 * * 1" \
   --uri="https://asia-east1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/882380127696/jobs/news-fetcher:run" \
   --http-method=POST \
   --oauth-service-account-email=your-service-account@project.iam.gserviceaccount.com \
@@ -185,7 +187,7 @@ gcloud functions logs read fetch-news \
   --project 882380127696
 
 # Cloud Scheduler 执行历史
-gcloud scheduler jobs describe fetch-news-daily \
+gcloud scheduler jobs describe fetch-news-weekly \
   --location=asia-east1 \
   --project=882380127696
 ```
@@ -230,7 +232,7 @@ curl https://asia-east1-882380127696.cloudfunctions.net/fetch-news
 
 - Cloud Function（免费层）：
   - 每月前 200 万次调用免费
-  - 每天 1 次调用，每月约 30 次，完全免费
+  - 每周 1 次调用，每月约 4 次，完全免费
 
 - Cloud Scheduler：
   - 每月前 3 个作业免费

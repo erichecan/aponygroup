@@ -32,7 +32,7 @@ export const Login: React.FC<LoginProps> = ({ language }) => {
       name: 'TMS 系统',
       nameEn: 'TMS System',
       icon: <Truck size={48} />,
-      url: 'https://tms-frontend-v4estohola-df.a.run.app/',
+      url: 'https://tms.aponygroup.com/',
       description: '运输管理系统',
       descriptionEn: 'Transportation Management System',
       color: 'text-[#FF6B35]',
@@ -91,8 +91,8 @@ export const Login: React.FC<LoginProps> = ({ language }) => {
             {isZh ? '数字化系统入口' : 'Digital System Portal'}
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            {isZh 
-              ? '访问 AponyGroup 的各类业务系统，提升工作效率' 
+            {isZh
+              ? '访问 AponyGroup 的各类业务系统，提升工作效率'
               : 'Access AponyGroup\'s business systems to improve work efficiency'}
           </p>
         </div>
@@ -153,8 +153,8 @@ export const Login: React.FC<LoginProps> = ({ language }) => {
         {/* Footer Note */}
         <div className="mt-12 text-center">
           <p className="text-sm text-slate-500">
-            {isZh 
-              ? '所有系统将在新窗口中打开' 
+            {isZh
+              ? '所有系统将在新窗口中打开'
               : 'All systems will open in a new window'}
           </p>
         </div>

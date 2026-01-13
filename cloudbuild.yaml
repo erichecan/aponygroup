@@ -9,17 +9,17 @@ steps:
     args: 
       - 'build'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$BUILD_ID'
+      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/website/website:$BUILD_ID'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:latest'
+      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/website/website:latest'
       - '.'
 
   # 推送镜像到 Artifact Registry (免费层：0.5GB 存储免费)
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$BUILD_ID']
+    args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/website/website:$BUILD_ID']
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:latest']
+    args: ['push', 'asia-east1-docker.pkg.dev/$PROJECT_ID/website/website:latest']
 
   # 部署到 Cloud Run (免费层配置：256Mi 内存，0.5 CPU)
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -27,9 +27,9 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'apony-website'
+      - 'website'
       - '--image'
-      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/apony-website/apony-website:$BUILD_ID'
+      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/website/website:$BUILD_ID'
       - '--region'
       - 'asia-east1'
       - '--platform'

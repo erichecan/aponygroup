@@ -1,5 +1,5 @@
 // Cloud Function: 新闻抓取 - 2025-01-27
-// 每天自动执行的新闻抓取函数
+// 每周自动执行的新闻抓取函数
 // 时间戳：2025-01-27
 
 const functions = require('@google-cloud/functions-framework');

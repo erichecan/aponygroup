@@ -1,7 +1,7 @@
 {
   "name": "news-fetcher",
   "version": "1.0.0",
-  "description": "Cloud Function for fetching news articles daily",
+  "description": "Cloud Function for fetching news articles weekly",
   "main": "index.js",
   "scripts": {
     "start": "functions-framework --target=fetchNews"

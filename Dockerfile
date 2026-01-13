@@ -10,7 +10,10 @@ WORKDIR /app
 # 复制 package 文件
 COPY package*.json ./
 
-# 安装依赖（使用 npm install 因为可能没有 package-lock.json）
+# 创建临时 package.json，移除 canvas（测试依赖，构建时不需要）- 2025-01-27
+RUN sed -i '/"canvas"/d' package.json || true
+
+# 安装依赖（canvas 已被移除，不会导致构建失败）
 RUN npm install
 
 # 复制源代码

@@ -48,21 +48,21 @@ echo "📡 函数 URL: ${FUNCTION_URL}"
 
 # 创建 Cloud Scheduler 任务（如果不存在）
 echo "⏰ 配置 Cloud Scheduler..."
-JOB_NAME="fetch-news-daily"
+JOB_NAME="fetch-news-weekly"
 
 if gcloud scheduler jobs describe ${JOB_NAME} --location=${REGION} --project=${PROJECT_ID} &>/dev/null; then
   echo "⚠️  调度任务已存在，跳过创建"
   echo "如需更新，请手动运行："
-  echo "gcloud scheduler jobs update http ${JOB_NAME} --location=${REGION} --schedule=\"0 2 * * *\" --uri=\"${FUNCTION_URL}\""
+  echo "gcloud scheduler jobs update http ${JOB_NAME} --location=${REGION} --schedule=\"0 2 * * 1\" --uri=\"${FUNCTION_URL}\""
 else
-  echo "📅 创建每日调度任务..."
+  echo "📅 创建每周调度任务..."
   gcloud scheduler jobs create http ${JOB_NAME} \
-    --schedule="0 2 * * *" \
+    --schedule="0 2 * * 1" \
     --uri="${FUNCTION_URL}" \
     --http-method=GET \
     --location=${REGION} \
     --project=${PROJECT_ID} \
-    --description="每天自动抓取新闻（UTC 02:00）" \
+    --description="每周自动抓取新闻（每周一 UTC 02:00，北京时间 10:00）" \
     --time-zone="UTC"
   
   echo "✅ 调度任务创建完成"

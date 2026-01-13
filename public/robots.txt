@@ -1,0 +1,17 @@
+# Robots.txt for AponyGroup Website
+# 时间戳：2025-01-27
+
+User-agent: *
+Allow: /
+
+# 禁止访问的路径
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap 位置
+Sitemap: https://www.aponygroup.com/sitemap.xml
+
+# 爬虫延迟（可选）
+# Crawl-delay: 1
+

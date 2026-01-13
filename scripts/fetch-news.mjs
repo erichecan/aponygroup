@@ -1,16 +1,17 @@
 // 新闻抓取脚本 - 2025-01-27
-// 每天自动抓取物流行业相关新闻
+// 每周自动抓取物流行业相关新闻
 // 时间戳：2025-01-27
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { fetchChwangNews } from './fetch-chwang-news.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 生成唯一 ID
-function generateId(title: string, date: string): string {
+function generateId(title, date) {
   const timestamp = new Date(date).getTime();
   const slug = title
     .toLowerCase()
@@ -21,7 +22,7 @@ function generateId(title: string, date: string): string {
 }
 
 // 根据标题和内容自动分类
-function categorizeNews(title: string, content: string): 'company' | 'industry' | 'policy' | 'knowledge' {
+function categorizeNews(title, content) {
   const text = `${title} ${content}`.toLowerCase();
   
   // 政策法规关键词
@@ -44,7 +45,7 @@ function categorizeNews(title: string, content: string): 'company' | 'industry' 
 }
 
 // 从新闻内容提取摘要
-function extractSummary(content: string, maxLength: number = 200): string {
+function extractSummary(content, maxLength = 200) {
   // 移除 HTML 标签
   const plainText = content.replace(/<[^>]*>/g, '').trim();
   
@@ -67,7 +68,7 @@ function extractSummary(content: string, maxLength: number = 200): string {
 }
 
 // 从 RSS Feed 抓取新闻
-async function fetchFromRSSFeed(url: string): Promise<NewsItem[]> {
+async function fetchFromRSSFeed(url) {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -78,7 +79,7 @@ async function fetchFromRSSFeed(url: string): Promise<NewsItem[]> {
     const text = await response.text();
     
     // 简单的 RSS 解析（实际项目中可以使用 rss-parser 库）
-    const items: NewsItem[] = [];
+    const items = [];
     
     // 使用正则表达式提取 RSS 项目
     const itemMatches = text.matchAll(/<item[^>]*>([\s\S]*?)<\/item>/gi);
@@ -121,22 +122,92 @@ async function fetchFromRSSFeed(url: string): Promise<NewsItem[]> {
   }
 }
 
-// 示例新闻源配置（实际使用时可以从配置文件读取）
+// 从 Sitemap XML 获取新闻链接
+async function fetchFromSitemap(sitemapUrl) {
+  try {
+    const response = await fetch(sitemapUrl);
+    if (!response.ok) {
+      console.warn(`Failed to fetch sitemap from ${sitemapUrl}: ${response.statusText}`);
+      return [];
+    }
+    
+    const text = await response.text();
+    const urls = [];
+    
+    // 解析 XML sitemap，提取 URL
+    const urlMatches = text.matchAll(/<loc[^>]*>([^<]+)<\/loc>/gi);
+    
+    for (const match of urlMatches) {
+      urls.push(match[1].trim());
+    }
+    
+    console.log(`从 sitemap 获取到 ${urls.length} 个 URL`);
+    return urls.slice(0, 50); // 限制最多处理 50 个链接
+  } catch (error) {
+    console.error(`Error fetching sitemap from ${sitemapUrl}:`, error);
+    return [];
+  }
+}
+
+// 从出海网 HTML 页面抓取新闻（简化版 - 需要根据实际 HTML 结构调整）
+async function fetchFromChwangHTML() {
+  try {
+    const url = 'https://www.chwang.com/news';
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; NewsBot/1.0)'
+      }
+    });
+    
+    if (!response.ok) {
+      console.warn(`Failed to fetch HTML from ${url}: ${response.statusText}`);
+      return [];
+    }
+    
+    const html = await response.text();
+    const items = [];
+    
+    // 注意：这里的解析规则需要根据出海网的实际 HTML 结构调整
+    // 以下是示例解析逻辑，实际使用时需要查看页面源码并调整
+    
+    // 尝试从 HTML 中提取新闻项
+    // 这里需要根据实际页面结构调整正则表达式
+    
+    console.log('HTML 解析功能需要根据实际页面结构定制');
+    return items;
+  } catch (error) {
+    console.error(`Error fetching HTML from chwang.com:`, error);
+    return [];
+  }
+}
+
+// 新闻源配置
 const NEWS_SOURCES = [
-  // 物流行业新闻 RSS feeds（示例）
-  // 实际使用时需要替换为真实的 RSS feed 地址
+  // 出海网 - 企业跨境出海综合服务平台
+  // 时间戳：2025-01-27 - 添加出海网作为新闻源
   {
-    name: 'Logistics Industry News',
+    name: '出海网 - 跨境物流新闻',
+    type: 'sitemap',
+    url: 'https://www.chwang.com/sitemap/news.xml', // 新闻 sitemap
+    enabled: true, // ✅ 已启用 - 2025-01-27
+    source: 'chwang',
+    filter: true, // 只抓取与物流相关的新闻
+    maxItems: 30, // 最多抓取 30 条（每周汇总）
+    daysBack: 14 // 抓取最近 14 天的新闻（覆盖一周）
+  },
+  // RSS Feed 示例（如果网站提供）
+  {
+    name: 'Logistics Industry News RSS',
     type: 'rss',
-    url: 'https://example.com/logistics-news.rss', // 需要替换为真实地址
-    enabled: false // 默认禁用，需要配置真实源后启用
+    url: 'https://example.com/logistics-news.rss',
+    enabled: false
   }
 ];
 
 // 生成示例新闻（用于演示和测试）
-function generateSampleNews(): NewsItem[] {
+function generateSampleNews() {
   const today = new Date();
-  const sampleNews: NewsItem[] = [];
+  const sampleNews = [];
   
   // 生成最近 7 天的示例新闻
   for (let i = 0; i < 5; i++) {
@@ -144,8 +215,7 @@ function generateSampleNews(): NewsItem[] {
     date.setDate(date.getDate() - i);
     const dateStr = date.toISOString().split('T')[0];
     
-    const categories: ('company' | 'industry' | 'policy' | 'knowledge')[] = 
-      ['company', 'industry', 'policy', 'knowledge'];
+    const categories = ['company', 'industry', 'policy', 'knowledge'];
     const category = categories[i % categories.length];
     
     const newsTemplates = {
@@ -221,7 +291,7 @@ async function fetchAndSaveNews() {
   console.log('开始抓取新闻...');
   console.log(`时间: ${new Date().toISOString()}`);
   
-  let allNews: NewsItem[] = [];
+  let allNews = [];
   
   // 从配置的新闻源抓取
   for (const source of NEWS_SOURCES) {
@@ -232,10 +302,27 @@ async function fetchAndSaveNews() {
     
     console.log(`正在从 ${source.name} 抓取新闻...`);
     
-    if (source.type === 'rss') {
-      const news = await fetchFromRSSFeed(source.url);
-      allNews = allNews.concat(news);
-      console.log(`从 ${source.name} 抓取到 ${news.length} 条新闻`);
+    try {
+      if (source.type === 'rss') {
+        const news = await fetchFromRSSFeed(source.url);
+        allNews = allNews.concat(news);
+        console.log(`从 ${source.name} 抓取到 ${news.length} 条新闻`);
+      } else if (source.type === 'sitemap' && source.source === 'chwang') {
+        // 使用出海网专用抓取函数
+        const news = await fetchChwangNews({
+          daysBack: source.daysBack || 14,  // 默认 14 天（覆盖一周）
+          maxItems: source.maxItems || 30,  // 默认 30 条（每周汇总）
+          filterLogistics: source.filter !== false
+        });
+        allNews = allNews.concat(news);
+        console.log(`从 ${source.name} 抓取到 ${news.length} 条新闻`);
+      } else if (source.type === 'sitemap') {
+        // 通用 sitemap 处理（如果需要）
+        console.log(`暂不支持通用 sitemap 类型，跳过 ${source.name}`);
+      }
+    } catch (error) {
+      console.error(`从 ${source.name} 抓取新闻失败:`, error);
+      // 继续处理其他新闻源
     }
   }
   
@@ -247,7 +334,7 @@ async function fetchAndSaveNews() {
   
   // 加载现有新闻
   const newsDataPath = path.join(__dirname, '../public/data/news.json');
-  let existingNews: NewsItem[] = [];
+  let existingNews = [];
   
   try {
     if (fs.existsSync(newsDataPath)) {
@@ -307,4 +394,3 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 
 export { fetchAndSaveNews };
-
