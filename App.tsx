@@ -17,6 +17,8 @@ import { FAQ } from './pages/FAQ';
 import { Cases } from './pages/Cases';
 import { News } from './pages/News';
 import { NotFound } from './pages/NotFound';
+import { MobileLogistics } from './pages/MobileLogistics';
+import { LogisticsDashboard } from './pages/LogisticsDashboard';
 
 // 懒加载重页面组件（性能优化）
 const CasesLazy = lazy(() => Promise.resolve({ default: Cases }));
@@ -32,8 +34,17 @@ export default function App() {
       return Language.ZH;
     }
   });
-  
+
   const [currentPage, setCurrentPage] = useState<Page>('home');
+
+  // Handle URL query parameters for routing - 2026-01-14
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const pageParam = params.get('page') as Page;
+    if (pageParam && validPages.includes(pageParam)) {
+      setCurrentPage(pageParam);
+    }
+  }, []);
 
   // 保存语言偏好到 localStorage - 2025-01-27
   useEffect(() => {
@@ -45,7 +56,7 @@ export default function App() {
   }, [language]);
 
   // 处理无效页面 - 显示 404 - 2025-01-27
-  const validPages: Page[] = ['home', 'services', 'about', 'contact', 'tracking', 'login', 'faq', 'cases', 'news', 'newsDetail'];
+  const validPages: Page[] = ['home', 'services', 'about', 'contact', 'tracking', 'login', 'faq', 'cases', 'news', 'newsDetail', 'mobile-logistics', 'logistics-dashboard'];
   const isValidPage = validPages.includes(currentPage);
 
   // 如果页面无效，显示 404
@@ -53,9 +64,9 @@ export default function App() {
     return (
       <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-[#FF6B35] flex flex-col">
         <SEOHead page="home" language={language} />
-        <Navbar 
-          language={language} 
-          setLanguage={setLanguage} 
+        <Navbar
+          language={language}
+          setLanguage={setLanguage}
           currentPage="home"
           setPage={setCurrentPage}
         />
@@ -69,7 +80,7 @@ export default function App() {
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-[#FF6B35] flex flex-col">
       {/* 跳过链接 - 可访问性优化 */}
       <SkipLink />
-      
+
       {/* 资源预加载 - 性能优化 - 2025-01-27 */}
       <ResourcePreloader
         images={[
@@ -77,25 +88,28 @@ export default function App() {
           '/assets/logo-white-bg.png',
         ]}
       />
-      
+
       {/* Analytics */}
       <Analytics enabled={true} />
-      
+
       {/* SEO Meta Tags */}
       <SEOHead page={currentPage} language={language} />
 
-      <Navbar 
-        language={language} 
-        setLanguage={setLanguage} 
-        currentPage={currentPage}
-        setPage={setCurrentPage}
-      />
+      {/* Navbar - 移动端收发货系统不使用主站 Navbar - 2025-01-27 */}
+      {currentPage !== 'mobile-logistics' && (
+        <Navbar
+          language={language}
+          setLanguage={setLanguage}
+          currentPage={currentPage}
+          setPage={setCurrentPage}
+        />
+      )}
 
-      {/* 面包屑导航 - 非首页显示 */}
-      {currentPage !== 'home' && (
-        <Breadcrumbs 
-          currentPage={currentPage} 
-          language={language} 
+      {/* 面包屑导航 - 非首页显示，移动端收发货系统不使用 - 2025-01-27 */}
+      {currentPage !== 'home' && currentPage !== 'mobile-logistics' && (
+        <Breadcrumbs
+          currentPage={currentPage}
+          language={language}
           setPage={setCurrentPage}
         />
       )}
@@ -109,7 +123,9 @@ export default function App() {
         {currentPage === 'tracking' && <Tracking language={language} />}
         {currentPage === 'login' && <Login language={language} />}
         {currentPage === 'faq' && <FAQ language={language} />}
-        
+        {currentPage === 'mobile-logistics' && <MobileLogistics setPage={setCurrentPage} />}
+        {currentPage === 'logistics-dashboard' && <LogisticsDashboard />}
+
         {/* 懒加载重页面 */}
         <Suspense fallback={
           <div className="pt-20 min-h-screen bg-slate-50" role="status" aria-live="polite">
@@ -136,7 +152,10 @@ export default function App() {
         </Suspense>
       </main>
 
-      <Footer language={language} setPage={setCurrentPage} />
+      {/* Footer - 移动端收发货系统不使用主站 Footer - 2025-01-27 */}
+      {currentPage !== 'mobile-logistics' && (
+        <Footer language={language} setPage={setCurrentPage} />
+      )}
     </div>
   );
 }

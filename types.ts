@@ -29,7 +29,7 @@ export interface NewsItem {
   imageUrl?: string;
 }
 
-export type Page = 'home' | 'services' | 'about' | 'contact' | 'tracking' | 'login' | 'faq' | 'cases' | 'news' | 'newsDetail';
+export type Page = 'home' | 'services' | 'about' | 'contact' | 'tracking' | 'login' | 'faq' | 'cases' | 'news' | 'newsDetail' | 'mobile-logistics' | 'logistics-dashboard';
 
 export interface TranslationResource {
   // Navigation
@@ -41,6 +41,9 @@ export interface TranslationResource {
   navTracking: string;
   navCustomerPortal: string; // 客户自助下单 - 2024-12-19 15:30:00
   navLogin: string;
+  navPortal: string;
+  navTools: string;
+  navPDFTool: string;
   navFAQ: string;
   navCases: string;
   navNews: string;
@@ -60,11 +63,11 @@ export interface TranslationResource {
   servicesTitle: string;
   servicesSubtitle: string;
   whyChooseUs: string;
-  
+
   // Services Page
   servicesPageTitle: string;
   servicesPageSubtitle: string;
-  
+
   serviceWarehousingTitle: string;
   serviceWarehousingDesc: string;
   serviceWarehousingPoints: string[];
@@ -94,7 +97,7 @@ export interface TranslationResource {
   visionDesc: string;
   historyTitle: string;
   historyDesc: string;
-  
+
   // Contact Page
   contactTitle: string;
   contactSubtitle: string;
@@ -175,6 +178,9 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navTracking: "Self Service", // 2024-12-19 18:50:00 - 改为自助服务
     navCustomerPortal: "Customer Portal", // 2024-12-19 15:30:00
     navLogin: "System Login",
+    navPortal: "Service Portal",
+    navTools: "Convenient Tools",
+    navPDFTool: "PDF to Excel",
     navFAQ: "FAQ",
     navCases: "Case Studies",
     navNews: "News",
@@ -191,11 +197,11 @@ export const STRINGS: Record<Language, TranslationResource> = {
     servicesTitle: "Our Core Services",
     servicesSubtitle: "Comprehensive solutions tailored for cross-border e-commerce",
     whyChooseUs: "Why Choose AponyGroup?",
-    
+
     // Services Page
     servicesPageTitle: "US & Canada Logistics Solutions",
     servicesPageSubtitle: "Comprehensive logistics services focused exclusively on US and Canada markets: customs clearance, landing services, warehousing, and transportation.",
-    
+
     serviceWarehousingTitle: "US & Canada Warehousing",
     serviceWarehousingDesc: "Our strategically located warehouses in the US and Canada ensure your products are stored securely and shipped rapidly. We handle B2C fulfillment and B2B distribution with 99.9% inventory accuracy, exclusively serving the North American market.",
     serviceWarehousingPoints: [
@@ -522,6 +528,9 @@ export const STRINGS: Record<Language, TranslationResource> = {
     navTracking: "自助服务", // 2024-12-19 18:50:00 - 改为自助服务
     navCustomerPortal: "客户自助下单", // 2024-12-19 15:30:00
     navLogin: "系统登录",
+    navPortal: "服务门户", // New
+    navTools: "便捷工具", // New
+    navPDFTool: "PDF转Excel", // New
     navFAQ: "常见问题",
     navCases: "成功案例",
     navNews: "新闻资讯",
@@ -542,7 +551,7 @@ export const STRINGS: Record<Language, TranslationResource> = {
     // Services Page
     servicesPageTitle: "美加物流解决方案",
     servicesPageSubtitle: "专注于美加市场的全方位物流服务：清关、落地服务、入仓、运输一站式解决方案。",
-    
+
     serviceWarehousingTitle: "美加仓储",
     serviceWarehousingDesc: "我们在美加战略布局的仓储网络确保您的产品安全存储并快速发货。我们支持 B2C 一件代发和 B2B 分销，库存准确率高达 99.9%，专注服务北美市场。",
     serviceWarehousingPoints: [

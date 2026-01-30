@@ -12,6 +12,21 @@
     <title>AponyGroup - Global Logistics & Warehousing</title>
     <!-- 注意：Tailwind CSS CDN 仅用于开发环境，生产环境应使用构建时的 CSS -->
     <!-- 2025-01-27: 保留 CDN 用于当前部署，后续将迁移到 PostCSS 构建 -->
+    <script>
+      console.log("⚠️ Application: React App Loaded (index.html)");
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            console.log('Unregistering SW:', registration);
+            registration.unregister();
+          }
+          if(registrations.length > 0) {
+              console.log("Force reloade after SW unregister");
+               window.location.reload();
+          }
+        });
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       // 仅在开发环境或 CDN 可用时配置 Tailwind

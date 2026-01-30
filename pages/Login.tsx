@@ -2,7 +2,7 @@
 // Created: 2025-01-27
 
 import React from 'react';
-import { ExternalLink, Truck, Package, Warehouse, Ship } from 'lucide-react';
+import { ExternalLink, Truck, Package, Warehouse, Ship, FileText } from 'lucide-react';
 import { Language, STRINGS } from '../types';
 import { Logo } from '../components/Logo';
 
@@ -65,6 +65,17 @@ export const Login: React.FC<LoginProps> = ({ language }) => {
       icon: <Ship size={48} />,
       description: '海运物流系统',
       descriptionEn: 'Ocean Freight Logistics System',
+      color: 'text-[#FF6B35]',
+      bgColor: 'bg-orange-50 hover:bg-orange-100'
+    },
+    {
+      id: 'pdf-tools',
+      name: 'PDF 转 Excel',
+      nameEn: 'PDF to Excel',
+      icon: <FileText size={48} />, // Need to import FileText
+      url: '/tools/pdf-converter/',
+      description: '便捷工具：PDF 表格转 Excel',
+      descriptionEn: 'Tool: Convert PDF Tables to Excel',
       color: 'text-[#FF6B35]',
       bgColor: 'bg-orange-50 hover:bg-orange-100'
     }

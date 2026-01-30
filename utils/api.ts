@@ -23,7 +23,7 @@ export interface ApiResponse<T = any> {
 export async function submitContactForm(formData: ContactFormData): Promise<ApiResponse> {
   try {
     // TODO: 替换为实际的 API 端点
-    const API_ENDPOINT = process.env.VITE_API_ENDPOINT || '/api/contact';
+    const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT || '/api/contact';
     
     const response = await fetch(API_ENDPOINT, {
       method: 'POST',
@@ -64,7 +64,7 @@ export async function submitContactForm(formData: ContactFormData): Promise<ApiR
 export async function trackOrder(trackingId: string): Promise<ApiResponse> {
   try {
     // TODO: 替换为实际的物流追踪 API
-    const API_ENDPOINT = process.env.VITE_TRACKING_API_ENDPOINT || '/api/tracking';
+    const API_ENDPOINT = import.meta.env.VITE_TRACKING_API_ENDPOINT || '/api/tracking';
     
     const response = await fetch(`${API_ENDPOINT}/${encodeURIComponent(trackingId)}`, {
       method: 'GET',

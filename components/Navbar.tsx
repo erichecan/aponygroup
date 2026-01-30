@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
   };
 
   return (
-    <nav 
+    <nav
       className="fixed w-full z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm"
       role="navigation"
       aria-label="Main navigation"
@@ -76,16 +76,15 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
                 onClick={() => handleNavClick(link.id)}
                 role="menuitem"
                 aria-current={currentPage === link.id ? 'page' : undefined}
-                className={`px-4 py-2 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2 ${
-                  currentPage === link.id 
-                    ? 'text-[#FF6B35] bg-orange-50' 
-                    : 'text-slate-600 hover:text-[#FF6B35] hover:bg-orange-50'
-                }`}
+                className={`px-4 py-2 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2 ${currentPage === link.id
+                  ? 'text-[#FF6B35] bg-orange-50'
+                  : 'text-slate-600 hover:text-[#FF6B35] hover:bg-orange-50'
+                  }`}
               >
                 {link.label}
               </button>
             ))}
-            
+
             <div className="flex items-center gap-3 pl-4 border-l border-slate-200 ml-3">
               {/* 搜索按钮 - 2025-01-27 */}
               <button
@@ -96,20 +95,19 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
               >
                 <Search size={20} />
               </button>
-              <button 
+              <button
                 onClick={toggleLanguage}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold transition-all"
               >
                 <Globe size={16} />
                 <span>{language === Language.EN ? 'EN' : 'CN'}</span>
               </button>
-              <button 
+              <button
                 onClick={() => handleNavClick('contact')}
-                className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-colors ${
-                    currentPage === 'contact' 
-                    ? 'bg-[#FF6B35] text-white' 
-                    : 'bg-black text-white hover:bg-[#1a1a1a]'
-                }`}
+                className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-colors ${currentPage === 'contact'
+                  ? 'bg-[#FF6B35] text-white'
+                  : 'bg-black text-white hover:bg-[#1a1a1a]'
+                  }`}
               >
                 {t.navContact}
               </button>
@@ -118,15 +116,15 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
-            <button 
-                onClick={toggleLanguage}
-                className="flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-700 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2"
-                aria-label={language === Language.EN ? 'Switch to Chinese' : '切换到英文'}
-              >
-                {language === Language.EN ? 'EN' : 'CN'}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-700 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2"
+              aria-label={language === Language.EN ? 'Switch to Chinese' : '切换到英文'}
+            >
+              {language === Language.EN ? 'EN' : 'CN'}
             </button>
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2 rounded p-1"
               aria-label={language === Language.EN ? 'Toggle menu' : '切换菜单'}
               aria-expanded={isMobileMenuOpen}
@@ -152,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
 
       {/* Mobile Dropdown */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           id="mobile-menu"
           className="md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg"
           role="menu"
@@ -165,19 +163,18 @@ export const Navbar: React.FC<NavbarProps> = ({ language, setLanguage, currentPa
                 onClick={() => handleNavClick(link.id)}
                 role="menuitem"
                 aria-current={currentPage === link.id ? 'page' : undefined}
-                className={`block w-full text-left px-3 py-3 text-base font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-inset ${
-                    currentPage === link.id 
-                    ? 'text-[#FF6B35] bg-orange-50' 
-                    : 'text-slate-600 hover:bg-orange-50'
-                }`}
+                className={`block w-full text-left px-3 py-3 text-base font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-inset ${currentPage === link.id
+                  ? 'text-[#FF6B35] bg-orange-50'
+                  : 'text-slate-600 hover:bg-orange-50'
+                  }`}
               >
                 {link.label}
               </button>
             ))}
             <button
-               onClick={() => handleNavClick('contact')}
-               role="menuitem"
-               className="block w-full text-left px-3 py-3 text-base font-medium text-[#FF6B35] hover:bg-orange-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-inset"
+              onClick={() => handleNavClick('contact')}
+              role="menuitem"
+              className="block w-full text-left px-3 py-3 text-base font-medium text-[#FF6B35] hover:bg-orange-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-inset"
             >
               {t.navContact}
             </button>

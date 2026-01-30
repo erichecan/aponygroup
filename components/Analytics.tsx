@@ -9,7 +9,7 @@ interface AnalyticsProps {
 }
 
 export const Analytics: React.FC<AnalyticsProps> = ({ 
-  trackingId = process.env.GA_TRACKING_ID || '',
+  trackingId = import.meta.env.VITE_GA_TRACKING_ID || '',
   enabled = true 
 }) => {
   useEffect(() => {

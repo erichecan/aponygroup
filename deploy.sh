@@ -6,7 +6,7 @@
 set -e
 
 PROJECT_ID="gen-lang-client-0364422903"
-SERVICE_NAME="website"
+SERVICE_NAME="apony-website"
 REGION="asia-east1"
 # 使用 Artifact Registry 而不是 Container Registry（免费层更友好）
 REPOSITORY="website"
@@ -31,6 +31,7 @@ APIS=(
     "run.googleapis.com"
     "cloudbuild.googleapis.com"
     "artifactregistry.googleapis.com"
+    "cloudfunctions.googleapis.com"
 )
 
 for api in "${APIS[@]}"; do
@@ -39,6 +40,31 @@ for api in "${APIS[@]}"; do
         gcloud services enable ${api} --project=${PROJECT_ID}
     fi
 done
+
+# 部署 Logistics API（Cloud Function）并获取 URL - 2026-01-14 13:44:52
+echo "🧩 部署 Logistics API（Cloud Function）..."
+FUNCTION_NAME="logistics-api"
+FUNCTION_REGION="${REGION}"
+gcloud functions deploy "${FUNCTION_NAME}" \
+  --gen2 \
+  --runtime nodejs20 \
+  --region "${FUNCTION_REGION}" \
+  --entry-point logisticsApi \
+  --trigger-http \
+  --allow-unauthenticated \
+  --project "${PROJECT_ID}" \
+  --timeout 540s \
+  --memory 256Mi \
+  --source "functions/logistics-api"
+
+LOGISTICS_API_URL=$(gcloud functions describe "${FUNCTION_NAME}" \
+  --gen2 \
+  --region "${FUNCTION_REGION}" \
+  --format 'value(serviceConfig.uri)' \
+  --project "${PROJECT_ID}")
+
+echo "✅ Logistics API URL: ${LOGISTICS_API_URL}"
+echo ""
 
 # 配置 Docker 认证（Artifact Registry）
 echo "🐳 配置 Docker 认证..."
@@ -59,7 +85,9 @@ fi
 
 # 构建 Docker 镜像（指定平台为 linux/amd64，Cloud Run 需要）- 2025-01-27
 echo "🔨 构建 Docker 镜像（linux/amd64 平台）..."
-docker build --platform linux/amd64 -t ${IMAGE_NAME}:latest .
+docker build --platform linux/amd64 \
+    --build-arg VITE_LOGISTICS_API_URL="${LOGISTICS_API_URL}" \
+    -t ${IMAGE_NAME}:latest .
 
 # 推送镜像
 echo "📤 推送镜像到 GCP Container Registry..."
@@ -73,7 +101,7 @@ gcloud run deploy ${SERVICE_NAME} \
     --region ${REGION} \
     --allow-unauthenticated \
     --port 80 \
-    --memory 256Mi \
+    --memory 1024Mi \
     --cpu 1 \
     --min-instances 0 \
     --max-instances 5 \
